@@ -1,6 +1,6 @@
 ![Logo](assets/brand.png)
 
-A mental health and anxiety monitoring application.
+A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
 ## Environment Setup
 Before you start development, run the following commands.
@@ -32,6 +32,12 @@ To run the app on a simulator within your computer instead, follow Expo's docume
 * [iOS](https://docs.expo.io/workflow/ios-simulator/)
 
 NOTE: Simulators have certain limitations, so running the app on your device is recommended.
+
+## Storybook
+To see components in Storybook, run the following command in the project directory. Storybook will default to running on port 6006. Open this port on your mobile device to view components there.
+```
+yarn storybook
+```
 
 ## Pre-Commit Hooks
 All commits are run through the following pre-commit commands to lint and format the code.
