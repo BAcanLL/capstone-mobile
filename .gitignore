@@ -14,3 +14,11 @@ web-build/
 
 # Webstorm configuration files
 .idea/
+
+#yarn
+.yarn/
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
