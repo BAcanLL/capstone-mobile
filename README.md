@@ -30,6 +30,7 @@ This is the preferred way to run the application. To run the app on your mobile 
 To run the app on a simulator within your computer instead, follow Expo's documentation:
 * [Android](https://docs.expo.io/workflow/android-studio-emulator/)
 * [iOS](https://docs.expo.io/workflow/ios-simulator/)
+
 NOTE: Simulators have certain limitations, so running the app on your device is recommended.
 
 ## Pre-Commit Hooks
