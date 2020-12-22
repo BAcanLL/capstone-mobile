@@ -3,12 +3,19 @@
 A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
 ## Environment Setup
+Make sure you're environment is at least up to that with the following.
+
+* **Node** version 10.19.0
+* **yarn** version 2.
+
 Before you start development, run the following commands.
 ```
 git clone https://github.com/BAcanLL/capstone-mobile.git
 cd capstone-mobile
 yarn
 ```
+
+_NOTE: We are still using node_modules despite being on yarn 2, as PnP doesn't support React Native._
 ## Starting the Application
 To start the application, run the following command in the project directory.
 ```
@@ -31,7 +38,7 @@ To run the app on a simulator within your computer instead, follow Expo's docume
 * [Android](https://docs.expo.io/workflow/android-studio-emulator/)
 * [iOS](https://docs.expo.io/workflow/ios-simulator/)
 
-NOTE: Simulators have certain limitations, so running the app on your device is recommended.
+_NOTE: Simulators have certain limitations, so running the app on your device is recommended._
 
 ## Storybook
 To see components in Storybook, run the following command in the project directory. Storybook will default to running on port 6006. Open this port on your mobile device to view components there.
