@@ -1,14 +1,16 @@
 module.exports = {
     "env": {
-      "browser": true,
-      "es2021": true,
-      "node": true,
-      "react-native/react-native": true,
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "react-native/react-native": true,
+        "jest/globals": true
     },
     "plugins":[
         "react",
         "react-native",
-        "prettier"
+        "prettier",
+        "jest"
     ],
     "extends": [
         "eslint:recommended",
@@ -17,7 +19,9 @@ module.exports = {
         "prettier/react",
         "prettier/babel",
         "prettier/prettier",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest/style"
     ],
     "parser": "babel-eslint",
     "parserOptions": {
