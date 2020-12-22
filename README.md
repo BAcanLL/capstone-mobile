@@ -1,4 +1,7 @@
 ![Logo](assets/brand.png)
+
+A mental health and anxiety monitoring application.
+
 ## Environment Setup
 Before you start development, run the following commands.
 ```
