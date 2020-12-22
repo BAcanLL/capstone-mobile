@@ -18,14 +18,14 @@ This will start [Expo](https://docs.expo.io/). By default, the application runs 
 
 To see the app once it's running, there are two options.
 
-#### Device
+#### On a Physical Device
 
 This is the preferred way to run the application. To run the app on your mobile device:
 1. Download the Expo app on your device.
 2. Scan the Expo QR code with your camera. The QR code is printed in terminal after running the start command as well as available in the DevTools.
 3. Open the Expo app when prompted.
 
-#### Simulator
+#### In a Simulator
 
 To run the app on a simulator within your computer instead, follow Expo's documentation:
 * [Android](https://docs.expo.io/workflow/android-studio-emulator/)
