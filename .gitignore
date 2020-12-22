@@ -22,3 +22,6 @@ web-build/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+#storybook
+/storybook-static
