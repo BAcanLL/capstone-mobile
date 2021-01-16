@@ -11,7 +11,7 @@ export default {
   component: Icon,
 };
 
-export const icons = () => (
+export const icon = () => (
   <Component
     style={{
       display: 'flex',
