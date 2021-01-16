@@ -35,6 +35,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-svg": "12.1.0",
     "react-native-web": "~0.13.12",
     "styled-components": "^5.2.1"
   },
@@ -42,7 +43,7 @@
     "@babel/core": "~7.9.0",
     "@expo/webpack-config": "^0.12.52",
     "@mdx-js/react": "^1.6.22",
-    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-actions": "^6.1.14",
     "@storybook/addon-docs": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-knobs": "^6.1.14",

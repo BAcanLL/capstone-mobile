@@ -1,16 +1,13 @@
 import { addDecorator, addParameters } from '@storybook/react';
-import {
-  Asap_400Regular,
-  Asap_400Regular_Italic,
-  Asap_500Medium,
-  Asap_500Medium_Italic,
-  Asap_600SemiBold,
-  Asap_600SemiBold_Italic,
-  Asap_700Bold,
-  Asap_700Bold_Italic,
-  useFonts,
-} from '@expo-google-fonts/asap';
 import { useCustomFonts } from '../src/utils/hooks';
+import { configureActions } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
+
+configureActions({
+  depth: 5,
+  // Limit the number of items logged into the actions panel
+  limit: 20,
+});
 
 addParameters({
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -22,3 +19,8 @@ const FontDecorator = (storyFn) => {
 };
 
 addDecorator(FontDecorator);
+addDecorator(
+  withKnobs({
+    escapeHTML: false,
+  })
+);

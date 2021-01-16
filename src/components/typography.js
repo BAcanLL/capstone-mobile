@@ -28,7 +28,7 @@ export const TextView = styled.Text`
   color: ${(props) => props.color || colors.darkGrey};
 `;
 
-TextView.PropTypes = {
+TextView.propTypes = {
   color: PropTypes.oneOf(Object.values(colors)),
   weight: PropTypes.oneOf(Object.values(fontWeights)),
   size: PropTypes.oneOf(Object.values(fontSizes)),

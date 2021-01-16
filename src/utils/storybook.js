@@ -17,7 +17,7 @@ export const Component = ({ style = {}, className = '', children }) => (
   </View>
 );
 
-Component.PropTypes = {
+Component.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   children: PropTypes.node,

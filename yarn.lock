@@ -3172,7 +3172,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-actions@npm:6.1.11, @storybook/addon-actions@npm:^6.1.11":
+"@storybook/addon-actions@npm:6.1.11":
   version: 6.1.11
   resolution: "@storybook/addon-actions@npm:6.1.11"
   dependencies:
@@ -3202,6 +3202,39 @@ __metadata:
     react-dom:
       optional: true
   checksum: 1fca8021d7d870067788fac490b59657ce2298885611fa79dbf61974a8f112b7a8170e81d9ca853045058b9a9b247f52907e9af1f09bbe3edaf101d70fcb8ca8
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-actions@npm:^6.1.14":
+  version: 6.1.14
+  resolution: "@storybook/addon-actions@npm:6.1.14"
+  dependencies:
+    "@storybook/addons": 6.1.14
+    "@storybook/api": 6.1.14
+    "@storybook/client-api": 6.1.14
+    "@storybook/components": 6.1.14
+    "@storybook/core-events": 6.1.14
+    "@storybook/theming": 6.1.14
+    core-js: ^3.0.1
+    fast-deep-equal: ^3.1.1
+    global: ^4.3.2
+    lodash: ^4.17.15
+    polished: ^3.4.4
+    prop-types: ^15.7.2
+    react-inspector: ^5.0.1
+    regenerator-runtime: ^0.13.7
+    ts-dedent: ^2.0.0
+    util-deprecate: ^1.0.2
+    uuid: ^8.0.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: bcf5688d0fe0ab6fe6a5900cfe5e354d7bce861cd37bf2259016275d3e57fc5fa3532d897177545edef1542371727087f24b8e3a3e686ef2231ebce6ad77a7f8
   languageName: node
   linkType: hard
 
@@ -7993,7 +8026,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-select@npm:^2.0.0":
+"css-select@npm:^2.0.0, css-select@npm:^2.1.0":
   version: 2.1.0
   resolution: "css-select@npm:2.1.0"
   dependencies:
@@ -8026,7 +8059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-tree@npm:^1.1.2":
+"css-tree@npm:^1.0.0-alpha.39, css-tree@npm:^1.1.2":
   version: 1.1.2
   resolution: "css-tree@npm:1.1.2"
   dependencies:
@@ -17812,6 +17845,19 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"react-native-svg@npm:12.1.0":
+  version: 12.1.0
+  resolution: "react-native-svg@npm:12.1.0"
+  dependencies:
+    css-select: ^2.1.0
+    css-tree: ^1.0.0-alpha.39
+  peerDependencies:
+    react: "*"
+    react-native: ">=0.50.0"
+  checksum: e962d59ce518c0a0baf04835a5030c2b38c8d16081abf25f995daf5f4c6e5e8ce44e1bd93053a89e63ed6d4ed1bb23672ada39089a9173907cd862677a149de1
+  languageName: node
+  linkType: hard
+
 "react-native-web@npm:~0.13.12":
   version: 0.13.18
   resolution: "react-native-web@npm:0.13.18"
@@ -18628,7 +18674,7 @@ resolve@1.1.7:
     "@expo-google-fonts/asap": ^0.1.0
     "@expo/webpack-config": ^0.12.52
     "@mdx-js/react": ^1.6.22
-    "@storybook/addon-actions": ^6.1.11
+    "@storybook/addon-actions": ^6.1.14
     "@storybook/addon-docs": ^6.1.11
     "@storybook/addon-essentials": ^6.1.11
     "@storybook/addon-knobs": ^6.1.14
@@ -18655,6 +18701,7 @@ resolve@1.1.7:
     react: 16.13.1
     react-dom: 16.13.1
     react-native: "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz"
+    react-native-svg: 12.1.0
     react-native-web: ~0.13.12
     styled-components: ^5.2.1
   languageName: unknown

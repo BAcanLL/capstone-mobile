@@ -1,15 +1,20 @@
 import styled from 'styled-components/native';
-import { colors } from './palette';
 
-export const ButtonWrapper = styled.Pressable`
+export const ButtonWrapper = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  background-color: ${colors.blue};
+  background-color: ${(props) => props.color};
   width: fit-content;
   height: 38px;
   border-radius: 19px;
   padding: 0px 15px;
+
+  ${(props) => props.pressed && 'filter: brightness(0.85);'}
+
+  & > svg {
+    padding-left: 5px;
+  }
 `;
