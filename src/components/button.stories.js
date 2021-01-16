@@ -1,22 +1,23 @@
 import React from 'react';
-import Button from './button';
+import Button, { BUTTON_SIZES } from './button';
 import { Component } from '../utils/storybook';
 import { select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { colors } from './palette';
+import { COLORS } from './palette';
 
 export default {
   title: 'Components/Button',
   component: Button,
 };
 
-export const button = () => (
+export const buttonWithText = () => (
   <Component>
     <Button
       text={text('Text', 'Press Me')}
       onPress={action('Pressed')}
-      color={select('Color', colors, colors.Primary)}
-      textColor={select('Text Color', colors, colors.white)}
+      color={select('Color', COLORS, COLORS.primary)}
+      textColor={select('Text Color', COLORS, COLORS.white)}
+      size={select('Size', BUTTON_SIZES, BUTTON_SIZES.regular)}
     />
   </Component>
 );
@@ -24,11 +25,23 @@ export const button = () => (
 export const buttonWithIcon = () => (
   <Component>
     <Button
-      text={text('Text', 'Press Me')}
       onPress={action('Pressed')}
-      color={select('Color', colors, colors.Primary)}
-      textColor={select('Text Color', colors, colors.white)}
+      color={select('Color', COLORS, COLORS.primary)}
+      icon={'microphone'}
+      size={select('Size', BUTTON_SIZES, BUTTON_SIZES.regular)}
+    />
+  </Component>
+);
+
+export const buttonWithTextAndIcon = () => (
+  <Component>
+    <Button
+      text={text('Text', 'Take')}
+      onPress={action('Pressed')}
+      color={select('Color', COLORS, COLORS.primary)}
+      textColor={select('Text Color', COLORS, COLORS.white)}
       icon={'pill'}
+      size={select('Size', BUTTON_SIZES, BUTTON_SIZES.regular)}
     />
   </Component>
 );

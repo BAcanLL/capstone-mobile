@@ -1,15 +1,15 @@
 import styled from 'styled-components/native';
-import { colors } from './palette';
+import { COLORS } from './palette';
 import PropTypes from 'prop-types';
 
-export const fontWeights = {
+export const FONT_WEIGHTS = {
   regular: 'Regular',
   medium: 'Medium',
   semiBold: 'SemiBold',
   bold: 'Bold',
 };
 
-export const fontSizes = {
+export const FONT_SIZES = {
   title: '24px',
   large: '18px',
   regular: '15px',
@@ -22,15 +22,15 @@ export const TextView = styled.Text`
   letter-spacing: 0px;
   font-family: ${(props) =>
     'Asap-' +
-    (props.weight || fontWeights.regular) +
+    (props.weight || FONT_WEIGHTS.semiBold) +
     (props.italic ? '-Italic' : '')};
-  font-size: ${(props) => props.size || fontSizes.regular};
-  color: ${(props) => props.color || colors.darkGrey};
+  font-size: ${(props) => props.size || FONT_SIZES.regular};
+  color: ${(props) => props.color || COLORS.darkGrey};
 `;
 
 TextView.propTypes = {
-  color: PropTypes.oneOf(Object.values(colors)),
-  weight: PropTypes.oneOf(Object.values(fontWeights)),
-  size: PropTypes.oneOf(Object.values(fontSizes)),
+  color: PropTypes.oneOf(Object.values(COLORS)),
+  weight: PropTypes.oneOf(Object.values(FONT_WEIGHTS)),
+  size: PropTypes.oneOf(Object.values(FONT_SIZES)),
   italic: PropTypes.bool,
 };

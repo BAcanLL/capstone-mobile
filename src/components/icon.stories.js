@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from '../utils/storybook';
 import { select } from '@storybook/addon-knobs';
-import { colors } from './palette';
+import { COLORS } from './palette';
 import { Icon } from './icon';
 import { ICON_KEYS, ICONS } from './icons';
 import { View, Text } from 'react-native';
@@ -16,7 +16,7 @@ export const icons = () => (
     style={{
       display: 'flex',
       flexWrap: 'wrap',
-      width: 500,
+      width: 450,
     }}
   >
     {ICON_KEYS.map((key) => (
@@ -27,7 +27,9 @@ export const icons = () => (
         <Icon
           key={key}
           icon={ICONS.get(key)}
-          color={select('Color', colors, colors.grey)}
+          width={50}
+          height={50}
+          color={select('Color', COLORS, COLORS.grey)}
         />
         <Text>{key}</Text>
       </View>
