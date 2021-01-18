@@ -36,5 +36,6 @@ module.exports = {
         "react/jsx-uses-react": 1,
         "react-native/no-unused-styles": 1,
         "react-native/split-platform-components": 2,
+        "react/prop-types": 0,
     }
 };
