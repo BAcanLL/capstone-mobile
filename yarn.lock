@@ -15352,6 +15352,45 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"mobx-react-lite@npm:^3.1.6":
+  version: 3.1.6
+  resolution: "mobx-react-lite@npm:3.1.6"
+  peerDependencies:
+    mobx: ^6.0.4
+    react: ^16.8.0 || ^17
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 39d31cf2343abc54450b0e796d04c074505501494b3ccceae9155f8f414bc063a64b74c6b579af8d660a59260398a0096732dfc802ff38192dc9b034d432ff13
+  languageName: node
+  linkType: hard
+
+"mobx-react@npm:^7.0.5":
+  version: 7.0.5
+  resolution: "mobx-react@npm:7.0.5"
+  dependencies:
+    mobx-react-lite: ^3.1.6
+  peerDependencies:
+    mobx: ^6.0.4
+    react: ^16.8.0 || ^17
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 5b6d5b608e629fc2a864dc0cba9951311891ffbd0183a10a1e00b179c596c9aac86a1d31460b6d16130177e1c7db289692613caa982340e83c7b0873fc1c2729
+  languageName: node
+  linkType: hard
+
+"mobx@npm:^6.0.4":
+  version: 6.0.4
+  resolution: "mobx@npm:6.0.4"
+  checksum: 7be0ce2cb744dd7b50cf4247ae3385b7e7829704275dda2ed9f01af01f5529b3e29575a4bcce4f460fb55b8138bc9d3196e30003d41be2441c128e30281378ef
+  languageName: node
+  linkType: hard
+
 "move-concurrently@npm:^1.0.1":
   version: 1.0.1
   resolution: "move-concurrently@npm:1.0.1"
@@ -18696,6 +18735,8 @@ resolve@1.1.7:
     jest: ^26.6.3
     jest-expo: ^40.0.1
     lint-staged: ^10.5.3
+    mobx: ^6.0.4
+    mobx-react: ^7.0.5
     prettier: 2.2.1
     prop-types: ^15.7.2
     react: 16.13.1
