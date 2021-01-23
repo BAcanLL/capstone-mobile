@@ -20,7 +20,7 @@ const EMOTE_PRESSED_COLOR = '#FFDB80';
 const DismalSvg = ({ pressed = false }) => (
   <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Mask
-      id="mask0"
+      id="mask_dismal"
       maskType="alpha"
       maskUnits="userSpaceOnUse"
       x="0"
@@ -34,17 +34,17 @@ const DismalSvg = ({ pressed = false }) => (
         r="27.5"
         fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
       />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#paint0_linear)" />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal0_linear)" />
     </Mask>
-    <G mask="url(#mask0)">
+    <G mask="url(#mask_dismal)">
       <Circle
         cx="27.5"
         cy="27.5"
         r="27.5"
         fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
       />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#paint1_linear)" />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#paint2_linear)" />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal1_linear)" />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal2_linear)" />
       <Rect
         x="10.9453"
         y="38"
@@ -91,7 +91,7 @@ const DismalSvg = ({ pressed = false }) => (
     {!pressed && (
       <Defs>
         <LinearGradient
-          id="paint0_linear"
+          id="dismal0_linear"
           x1="0"
           y1="0"
           x2="55"
@@ -102,7 +102,7 @@ const DismalSvg = ({ pressed = false }) => (
           <Stop offset="1" stopColor="white" stopOpacity="0" />
         </LinearGradient>
         <LinearGradient
-          id="paint1_linear"
+          id="dismal1_linear"
           x1="0"
           y1="0"
           x2="55"
@@ -113,7 +113,7 @@ const DismalSvg = ({ pressed = false }) => (
           <Stop offset="1" stopColor="white" stopOpacity="0" />
         </LinearGradient>
         <LinearGradient
-          id="paint2_linear"
+          id="dismal2_linear"
           x1="27.5"
           y1="0"
           x2="27.5"
@@ -129,53 +129,53 @@ const DismalSvg = ({ pressed = false }) => (
 );
 
 const EcstaticSvg = ({ pressed = false }) => (
-  <Svg width="56" height="55" viewBox="0 0 56 55" fill="none">
+  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Circle
-      cx="28.2002"
+      cx="27.5"
       cy="27.5"
       r="27.5"
       fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
     />
-    <Circle cx="28.2002" cy="27.5" r="27.5" fill="url(#paint0_linear)" />
+    <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#ecstatic0_linear)" />
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M15.1157 15.1181C14.5895 13.1469 12.7931 11.6952 10.658 11.6952C8.52288 11.6952 6.72649 13.1469 6.2003 15.1181C6.2003 15.1181 6.3197 15.6355 6.91372 15.6355C7.50774 15.6355 7.62714 15.1181 7.62714 15.1181C8.10343 13.909 9.2809 13.0535 10.658 13.0535C12.0351 13.0535 13.2126 13.909 13.6889 15.1181C13.6889 15.1181 13.7625 15.6355 14.4023 15.6355C15.0421 15.6355 15.1157 15.1181 15.1157 15.1181Z"
+      d="M14.4155 15.1181C13.8893 13.1469 12.0929 11.6952 9.95782 11.6952C7.82268 11.6952 6.0263 13.1469 5.5001 15.1181C5.5001 15.1181 5.61951 15.6355 6.21352 15.6355C6.80754 15.6355 6.92694 15.1181 6.92694 15.1181C7.40323 13.909 8.58071 13.0535 9.95782 13.0535C11.3349 13.0535 12.5124 13.909 12.9887 15.1181C12.9887 15.1181 13.0623 15.6355 13.7021 15.6355C14.3419 15.6355 14.4155 15.1181 14.4155 15.1181Z"
       fill="#5F5F5F"
     />
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M51 15.1182C50.4738 13.147 48.6774 11.6953 46.5423 11.6953C44.4071 11.6953 42.6108 13.147 42.0846 15.1182C42.0846 15.1182 42.204 15.6356 42.798 15.6356C43.392 15.6356 43.5114 15.1182 43.5114 15.1182C43.9877 13.9091 45.1652 13.0536 46.5423 13.0536C47.9194 13.0536 49.0969 13.9091 49.5732 15.1182C49.5732 15.1182 49.6468 15.6356 50.2866 15.6356C50.9264 15.6356 51 15.1182 51 15.1182Z"
+      d="M50.2998 15.1182C49.7736 13.147 47.9772 11.6953 45.8421 11.6953C43.7069 11.6953 41.9106 13.147 41.3844 15.1182C41.3844 15.1182 41.5038 15.6356 42.0978 15.6356C42.6918 15.6356 42.8112 15.1182 42.8112 15.1182C43.2875 13.9091 44.465 13.0536 45.8421 13.0536C47.2192 13.0536 48.3967 13.9091 48.873 15.1182C48.873 15.1182 48.9466 15.6356 49.5864 15.6356C50.2262 15.6356 50.2998 15.1182 50.2998 15.1182Z"
       fill="#5F5F5F"
     />
-    <Ellipse cx="4.04029" cy="19.2961" rx="3.3401" ry="1.9484" fill="#FF8989" />
-    <Ellipse cx="52.3601" cy="19.2961" rx="3.3401" ry="1.9484" fill="#FF8989" />
+    <Ellipse cx="3.3401" cy="19.2961" rx="3.3401" ry="1.9484" fill="#FF8989" />
+    <Ellipse cx="51.6599" cy="19.2961" rx="3.3401" ry="1.9484" fill="#FF8989" />
     <Mask
-      id="mask0"
+      id="ecstatic_mask"
       maskType="alpha"
       maskUnits="userSpaceOnUse"
-      x="8"
+      x="7"
       y="20"
-      width="41"
+      width="42"
       height="24"
     >
       <Path
-        d="M8.30038 23.4369C8.30032 23.4565 8.30029 23.4761 8.30029 23.4957C8.30029 34.7094 17.3889 43.7999 28.6003 43.7999C39.8117 43.7999 48.9003 34.7094 48.9003 23.4957C48.9003 23.4761 48.9003 23.4565 48.9002 23.4369C48.9002 23.4369 42.1925 20.2 28.6003 20.2C15.0081 20.2 8.30038 23.4369 8.30038 23.4369Z"
+        d="M7.60018 23.4369C7.60013 23.4565 7.6001 23.4761 7.6001 23.4957C7.6001 34.7094 16.6887 43.7999 27.9001 43.7999C39.1115 43.7999 48.2001 34.7094 48.2001 23.4957C48.2001 23.4761 48.2001 23.4565 48.2 23.4369C48.2 23.4369 41.4923 20.2 27.9001 20.2C14.3079 20.2 7.60018 23.4369 7.60018 23.4369Z"
         fill="#FFFFFF"
       />
     </Mask>
-    <G mask="url(#mask0)">
-      <rect x="7.2002" y="18.6" width="42.7" height="27.6" fill="#5F5F5F" />
-      <circle cx="28.6505" cy="47.65" r="19.15" fill="#FF8989" />
+    <G mask="url(#ecstatic_mask)">
+      <Rect x="6.5" y="18.6" width="42.7" height="27.6" fill="#5F5F5F" />
+      <Circle cx="27.9503" cy="47.65" r="19.15" fill="#FF8989" />
     </G>
     {!pressed && (
       <Defs>
         <LinearGradient
-          id="paint0_linear"
-          x1="0.700195"
+          id="ecstatic0_linear"
+          x1="0"
           y1="0"
-          x2="55.7002"
+          x2="55"
           y2="55"
           gradientUnits="userSpaceOnUse"
         >
@@ -188,39 +188,39 @@ const EcstaticSvg = ({ pressed = false }) => (
 );
 
 const HappySvg = ({ pressed = false }) => (
-  <Svg width="56" height="55" viewBox="0 0 56 55" fill="none">
+  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Circle
-      cx="27.8999"
+      cx="27.5"
       cy="27.5"
       r="27.5"
       fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
     />
-    <Circle cx="27.8999" cy="27.5" r="27.5" fill="url(#paint0_linear)" />
+    <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#happy0_linear)" />
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M22.3799 30.3C23.0314 32.7763 25.2558 34.6 27.8996 34.6C30.5434 34.6 32.7677 32.7763 33.4193 30.3C33.4193 30.3 33.2714 29.65 32.5359 29.65C31.8004 29.65 31.6525 30.3 31.6525 30.3C31.0628 31.8189 29.6048 32.8937 27.8996 32.8937C26.1944 32.8937 24.7364 31.8189 24.1467 30.3C24.1467 30.3 24.0555 29.65 23.2633 29.65C22.471 29.65 22.3799 30.3 22.3799 30.3Z"
+      d="M21.98 30.3C22.6315 32.7763 24.8559 34.6 27.4997 34.6C30.1435 34.6 32.3678 32.7763 33.0194 30.3C33.0194 30.3 32.8715 29.65 32.136 29.65C31.4005 29.65 31.2526 30.3 31.2526 30.3C30.6629 31.8189 29.2049 32.8937 27.4997 32.8937C25.7945 32.8937 24.3365 31.8189 23.7467 30.3C23.7467 30.3 23.6556 29.65 22.8634 29.65C22.0711 29.65 21.98 30.3 21.98 30.3Z"
       fill="#5F5F5F"
     />
     <Ellipse
       rx="2.66129"
       ry="3.5"
-      transform="matrix(-1 0 0 1 13.6078 22.6)"
+      transform="matrix(-1 0 0 1 13.2079 22.6)"
       fill="#5F5F5F"
     />
     <Ellipse
       rx="2.66129"
       ry="3.5"
-      transform="matrix(-1 0 0 1 43.3748 22.6)"
+      transform="matrix(-1 0 0 1 42.9749 22.6)"
       fill="#5F5F5F"
     />
     {!pressed && (
       <Defs>
         <LinearGradient
-          id="paint0_linear"
-          x1="0.399902"
+          id="happy0_linear"
+          x1="0"
           y1="0"
-          x2="55.3999"
+          x2="55"
           y2="55"
           gradientUnits="userSpaceOnUse"
         >
@@ -233,37 +233,37 @@ const HappySvg = ({ pressed = false }) => (
 );
 
 const NeutralSvg = ({ pressed = false }) => (
-  <Svg width="56" height="55" viewBox="0 0 56 55" fill="none">
+  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Circle
-      cx="28.1001"
+      cx="27.5"
       cy="27.5"
       r="27.5"
       fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
     />
-    <Circle cx="28.1001" cy="27.5" r="27.5" fill="url(#paint0_linear)" />
+    <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#neutral0_linear)" />
     <Ellipse
       rx="2.66129"
       ry="2.7"
-      transform="matrix(-1 0 0 1 18.7362 26.3)"
+      transform="matrix(-1 0 0 1 18.1361 26.3)"
       fill="#5F5F5F"
     />
     <Ellipse
       rx="2.66129"
       ry="2.7"
-      transform="matrix(-1 0 0 1 37.4637 26.3)"
+      transform="matrix(-1 0 0 1 36.8636 26.3)"
       fill="#5F5F5F"
     />
     <Path
-      d="M23.7005 34.6H32.5985C32.5985 34.6 33.1271 34.6 33.1271 35.45C33.1271 36.3 32.5985 36.3 32.5985 36.3H23.7005C23.7005 36.3 23.1719 36.3 23.1719 35.45C23.1719 34.6 23.7005 34.6 23.7005 34.6Z"
+      d="M23.1004 34.6H31.9984C31.9984 34.6 32.527 34.6 32.527 35.45C32.527 36.3 31.9984 36.3 31.9984 36.3H23.1004C23.1004 36.3 22.5718 36.3 22.5718 35.45C22.5718 34.6 23.1004 34.6 23.1004 34.6Z"
       fill="#5F5F5F"
     />
     {!pressed && (
       <Defs>
         <LinearGradient
-          id="paint0_linear"
-          x1="0.600098"
+          id="neutral0_linear"
+          x1="0"
           y1="0"
-          x2="55.6001"
+          x2="55"
           y2="55"
           gradientUnits="userSpaceOnUse"
         >
@@ -276,39 +276,39 @@ const NeutralSvg = ({ pressed = false }) => (
 );
 
 const SadSvg = ({ pressed = false }) => (
-  <Svg width="56" height="55" viewBox="0 0 56 55" fill="none">
+  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Circle
-      cx="28.3"
+      cx="27.5"
       cy="27.5"
       r="27.5"
       fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
     />
-    <Circle cx="28.3" cy="27.5" r="27.5" fill="url(#paint0_linear)" />
+    <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#sad0_linear)" />
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M22.7803 42.3501C23.4318 39.8739 25.6562 38.0501 28.3 38.0501C30.9438 38.0501 33.1681 39.8739 33.8197 42.3501C33.8197 42.3501 33.6718 43.0001 32.9363 43.0001C32.2008 43.0001 32.0529 42.3501 32.0529 42.3501C31.4632 40.8312 30.0052 39.7565 28.3 39.7565C26.5948 39.7565 25.1368 40.8312 24.547 42.3501C24.547 42.3501 24.4559 43.0001 23.6637 43.0001C22.8714 43.0001 22.7803 42.3501 22.7803 42.3501Z"
+      d="M21.9802 42.3501C22.6318 39.8739 24.8561 38.0501 27.4999 38.0501C30.1437 38.0501 32.3681 39.8739 33.0196 42.3501C33.0196 42.3501 32.8718 43.0001 32.1363 43.0001C31.4007 43.0001 31.2529 42.3501 31.2529 42.3501C30.6631 40.8312 29.2051 39.7565 27.4999 39.7565C25.7947 39.7565 24.3367 40.8312 23.747 42.3501C23.747 42.3501 23.6558 43.0001 22.8636 43.0001C22.0714 43.0001 21.9802 42.3501 21.9802 42.3501Z"
       fill="#5F5F5F"
     />
     <Ellipse
       rx="2.66129"
       ry="3.5"
-      transform="matrix(-1 0 0 1 14.0079 31)"
+      transform="matrix(-1 0 0 1 13.2079 31)"
       fill="#5F5F5F"
     />
     <Ellipse
       rx="2.66129"
       ry="3.5"
-      transform="matrix(-1 0 0 1 43.775 31)"
+      transform="matrix(-1 0 0 1 42.9749 31)"
       fill="#5F5F5F"
     />
     {!pressed && (
       <Defs>
         <LinearGradient
-          id="paint0_linear"
-          x1="0.800049"
+          id="sad0_linear"
+          x1="0"
           y1="0"
-          x2="55.8"
+          x2="55"
           y2="55"
           gradientUnits="userSpaceOnUse"
         >
@@ -320,10 +320,11 @@ const SadSvg = ({ pressed = false }) => (
   </Svg>
 );
 
-const EmoticonWrapper = ({ onPress, children }) => {
+const EmoticonWrapper = ({ onPress, disabled, children }) => {
   const [pressed, setPressed] = useState(false);
   return (
     <Pressable
+      disabled={disabled}
       onPress={onPress}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
@@ -347,38 +348,39 @@ const EmoticonWrapper = ({ onPress, children }) => {
   );
 };
 
-const Dismal = ({ onPress }) => (
-  <EmoticonWrapper onPress={onPress}>
+const Dismal = ({ onPress, disabled = false }) => (
+  <EmoticonWrapper onPress={onPress} disabled={disabled}>
     <DismalSvg />
   </EmoticonWrapper>
 );
 
-const Sad = ({ onPress }) => (
-  <EmoticonWrapper onPress={onPress}>
+const Sad = ({ onPress, disabled = false }) => (
+  <EmoticonWrapper onPress={onPress} disabled={disabled}>
     <SadSvg />
   </EmoticonWrapper>
 );
 
-const Neutral = ({ onPress }) => (
-  <EmoticonWrapper onPress={onPress}>
+const Neutral = ({ onPress, disabled = false }) => (
+  <EmoticonWrapper onPress={onPress} disabled={disabled}>
     <NeutralSvg />
   </EmoticonWrapper>
 );
 
-const Happy = ({ onPress }) => (
-  <EmoticonWrapper onPress={onPress}>
+const Happy = ({ onPress, disabled = false }) => (
+  <EmoticonWrapper onPress={onPress} disabled={disabled}>
     <HappySvg />
   </EmoticonWrapper>
 );
 
-const Ecstatic = ({ onPress }) => (
-  <EmoticonWrapper onPress={onPress}>
+const Ecstatic = ({ onPress, disabled = false }) => (
+  <EmoticonWrapper onPress={onPress} disabled={disabled}>
     <EcstaticSvg />
   </EmoticonWrapper>
 );
 
 const pt = {
-  onPress: PropTypes.func,
+  onPress: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 Dismal.propTypes = pt;
