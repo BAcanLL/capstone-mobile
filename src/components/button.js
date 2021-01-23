@@ -12,13 +12,15 @@ export const BUTTON_SIZES = {
     height: 28,
     fontSize: FONT_SIZES.regular,
     fontWeight: FONT_WEIGHTS.semiBold,
-    iconSize: 12,
+    iconSize: 14,
+    shadow: false,
   },
   large: {
     height: 38,
     fontSize: FONT_SIZES.large,
     fontWeight: FONT_WEIGHTS.semiBold,
     iconSize: 18,
+    shadow: true,
   },
 };
 
@@ -42,6 +44,7 @@ const Button = ({
         pressed={pressed}
         color={color}
         height={size.height}
+        shadow={size.shadow}
         round={round}
       >
         {text && (
