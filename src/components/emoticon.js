@@ -17,117 +17,6 @@ import PropTypes from 'prop-types';
 const EMOTE_COLOR = '#FFDD65';
 const EMOTE_PRESSED_COLOR = '#FFDB80';
 
-const DismalSvg = ({ pressed = false }) => (
-  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
-    <Mask
-      id="mask_dismal"
-      maskType="alpha"
-      maskUnits="userSpaceOnUse"
-      x="0"
-      y="0"
-      width="55"
-      height="55"
-    >
-      <Circle
-        cx="27.5"
-        cy="27.5"
-        r="27.5"
-        fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
-      />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal0_linear)" />
-    </Mask>
-    <G mask="url(#mask_dismal)">
-      <Circle
-        cx="27.5"
-        cy="27.5"
-        r="27.5"
-        fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
-      />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal1_linear)" />
-      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal2_linear)" />
-      <Rect
-        x="10.9453"
-        y="38"
-        width="5.61829"
-        height="20.4999"
-        fill="#54CCFF"
-      />
-      <Rect
-        x="9.4624"
-        y="37.5"
-        width="8.67383"
-        height="1.7"
-        rx="0.849998"
-        fill="#5F5F5F"
-      />
-      <Rect x="38.5366" y="38.6" width="5.61831" height="20.5" fill="#54CCFF" />
-      <Rect
-        x="36.9624"
-        y="37.5"
-        width="8.67384"
-        height="1.7"
-        rx="0.849998"
-        fill="#5F5F5F"
-      />
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M21.9802 47.3002C22.6318 44.8239 24.8561 43.0002 27.4999 43.0002C30.1437 43.0002 32.3681 44.8239 33.0196 47.3002C33.0196 47.3002 32.8718 47.9502 32.1363 47.9502C31.4007 47.9502 31.2529 47.3002 31.2529 47.3002C30.6631 45.7813 29.2051 44.7065 27.4999 44.7065C25.7947 44.7065 24.3367 45.7813 23.747 47.3002C23.747 47.3002 23.6558 47.9502 22.8636 47.9502C22.0714 47.9502 21.9802 47.3002 21.9802 47.3002Z"
-        fill="#5F5F5F"
-      />
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M15.466 26.0621C12.8515 28.6304 8.89728 29.6687 7.2419 29.8765L7.09668 28.6856C8.62828 28.4933 12.29 27.5117 14.6432 25.2L15.466 26.0621Z"
-        fill="#5F5F5F"
-      />
-      <Path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M39.6234 26.0621C42.2379 28.6304 46.1921 29.6687 47.8475 29.8765L47.9927 28.6856C46.4611 28.4933 42.7994 27.5117 40.4461 25.2L39.6234 26.0621Z"
-        fill="#5F5F5F"
-      />
-    </G>
-    {!pressed && (
-      <Defs>
-        <LinearGradient
-          id="dismal0_linear"
-          x1="0"
-          y1="0"
-          x2="55"
-          y2="55"
-          gradientUnits="userSpaceOnUse"
-        >
-          <Stop stopColor="#FFEFA2" />
-          <Stop offset="1" stopColor="white" stopOpacity="0" />
-        </LinearGradient>
-        <LinearGradient
-          id="dismal1_linear"
-          x1="0"
-          y1="0"
-          x2="55"
-          y2="55"
-          gradientUnits="userSpaceOnUse"
-        >
-          <Stop stopColor="#FFEFA2" />
-          <Stop offset="1" stopColor="white" stopOpacity="0" />
-        </LinearGradient>
-        <LinearGradient
-          id="dismal2_linear"
-          x1="27.5"
-          y1="0"
-          x2="27.5"
-          y2="55"
-          gradientUnits="userSpaceOnUse"
-        >
-          <Stop stopColor="#7694FF" stopOpacity="0.53" />
-          <Stop offset="0.822917" stopColor="white" stopOpacity="0" />
-        </LinearGradient>
-      </Defs>
-    )}
-  </Svg>
-);
-
 const EcstaticSvg = ({ pressed = false }) => (
   <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
     <Circle
@@ -314,6 +203,117 @@ const SadSvg = ({ pressed = false }) => (
         >
           <Stop stopColor="#FFEFA2" />
           <Stop offset="1" stopColor="white" stopOpacity="0" />
+        </LinearGradient>
+      </Defs>
+    )}
+  </Svg>
+);
+
+const DismalSvg = ({ pressed = false }) => (
+  <Svg width="55" height="55" viewBox="0 0 55 55" fill="none">
+    <Mask
+      id="mask_dismal"
+      maskType="alpha"
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="55"
+      height="55"
+    >
+      <Circle
+        cx="27.5"
+        cy="27.5"
+        r="27.5"
+        fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
+      />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal0_linear)" />
+    </Mask>
+    <G mask="url(#mask_dismal)">
+      <Circle
+        cx="27.5"
+        cy="27.5"
+        r="27.5"
+        fill={pressed ? EMOTE_PRESSED_COLOR : EMOTE_COLOR}
+      />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal1_linear)" />
+      <Circle cx="27.5" cy="27.5" r="27.5" fill="url(#dismal2_linear)" />
+      <Rect
+        x="10.9453"
+        y="38"
+        width="5.61829"
+        height="20.4999"
+        fill="#54CCFF"
+      />
+      <Rect
+        x="9.4624"
+        y="37.5"
+        width="8.67383"
+        height="1.7"
+        rx="0.849998"
+        fill="#5F5F5F"
+      />
+      <Rect x="38.5366" y="38.6" width="5.61831" height="20.5" fill="#54CCFF" />
+      <Rect
+        x="36.9624"
+        y="37.5"
+        width="8.67384"
+        height="1.7"
+        rx="0.849998"
+        fill="#5F5F5F"
+      />
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21.9802 47.3002C22.6318 44.8239 24.8561 43.0002 27.4999 43.0002C30.1437 43.0002 32.3681 44.8239 33.0196 47.3002C33.0196 47.3002 32.8718 47.9502 32.1363 47.9502C31.4007 47.9502 31.2529 47.3002 31.2529 47.3002C30.6631 45.7813 29.2051 44.7065 27.4999 44.7065C25.7947 44.7065 24.3367 45.7813 23.747 47.3002C23.747 47.3002 23.6558 47.9502 22.8636 47.9502C22.0714 47.9502 21.9802 47.3002 21.9802 47.3002Z"
+        fill="#5F5F5F"
+      />
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15.466 26.0621C12.8515 28.6304 8.89728 29.6687 7.2419 29.8765L7.09668 28.6856C8.62828 28.4933 12.29 27.5117 14.6432 25.2L15.466 26.0621Z"
+        fill="#5F5F5F"
+      />
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M39.6234 26.0621C42.2379 28.6304 46.1921 29.6687 47.8475 29.8765L47.9927 28.6856C46.4611 28.4933 42.7994 27.5117 40.4461 25.2L39.6234 26.0621Z"
+        fill="#5F5F5F"
+      />
+    </G>
+    {!pressed && (
+      <Defs>
+        <LinearGradient
+          id="dismal0_linear"
+          x1="0"
+          y1="0"
+          x2="55"
+          y2="55"
+          gradientUnits="userSpaceOnUse"
+        >
+          <Stop stopColor="#FFEFA2" />
+          <Stop offset="1" stopColor="white" stopOpacity="0" />
+        </LinearGradient>
+        <LinearGradient
+          id="dismal1_linear"
+          x1="0"
+          y1="0"
+          x2="55"
+          y2="55"
+          gradientUnits="userSpaceOnUse"
+        >
+          <Stop stopColor="#FFEFA2" />
+          <Stop offset="1" stopColor="white" stopOpacity="0" />
+        </LinearGradient>
+        <LinearGradient
+          id="dismal2_linear"
+          x1="27.5"
+          y1="0"
+          x2="27.5"
+          y2="55"
+          gradientUnits="userSpaceOnUse"
+        >
+          <Stop stopColor="#7694FF" stopOpacity="0.53" />
+          <Stop offset="0.822917" stopColor="white" stopOpacity="0" />
         </LinearGradient>
       </Defs>
     )}
