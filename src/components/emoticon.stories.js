@@ -8,9 +8,9 @@ export default {
   component: Emoticon,
 };
 
-export const ecstatic = () => (
+export const dismal = () => (
   <Component>
-    <Emoticon.Ecstatic onPress={action('Pressed')} />
+    <Emoticon.Dismal onPress={action('Pressed')} />
   </Component>
 );
 
@@ -32,8 +32,8 @@ export const happy = () => (
   </Component>
 );
 
-export const dismal = () => (
+export const ecstatic = () => (
   <Component>
-    <Emoticon.Dismal onPress={action('Pressed')} />
+    <Emoticon.Ecstatic onPress={action('Pressed')} />
   </Component>
 );
