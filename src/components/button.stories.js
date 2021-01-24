@@ -45,3 +45,9 @@ export const buttonWithTextAndIcon = () => (
     />
   </Component>
 );
+
+export const toggleButton = () => (
+  <Component>
+    <Button.Toggle text={text('Text', 'Happy')} onPress={action('Pressed')} />
+  </Component>
+);
