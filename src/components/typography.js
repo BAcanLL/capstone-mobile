@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { COLORS } from './palette';
 import PropTypes from 'prop-types';
 
@@ -17,7 +17,7 @@ export const FONT_SIZES = {
   timer: '36px',
 };
 
-export const TextView = styled.Text`
+export const textStyle = css`
   margin: 0;
   letter-spacing: 0px;
   font-family: ${(props) =>
@@ -26,6 +26,10 @@ export const TextView = styled.Text`
     (props.italic ? '-Italic' : '')};
   font-size: ${(props) => props.size || FONT_SIZES.regular};
   color: ${(props) => props.color || COLORS.darkGrey};
+`;
+
+export const TextView = styled.Text`
+  ${textStyle}
 `;
 
 TextView.propTypes = {
