@@ -31,17 +31,20 @@ const Button = ({
   textColor = COLORS.white,
   icon,
   size = BUTTON_SIZES.regular,
+  disabled = false,
+  disablePressStyle = false, // used to override with custom styling
 }) => {
   const [pressed, setPressed] = useState(false);
   const round = text == null && icon != null;
   return (
     <Pressable
+      disabled={disabled}
       onPress={onPress}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
     >
       <ButtonWrapper
-        pressed={pressed}
+        pressed={!disablePressStyle && pressed}
         color={color}
         height={size.height}
         shadow={size.shadow}
@@ -71,6 +74,32 @@ const Button = ({
   );
 };
 
+const ToggleButton = ({ onPress, text, initial = false, disabled = false }) => {
+  const [isActive, setIsActive] = useState(initial);
+
+  const inactiveSize = {
+    ...BUTTON_SIZES.regular,
+    fontSize: FONT_SIZES.regular,
+  };
+
+  return (
+    <Button
+      onPress={() => {
+        onPress(!isActive);
+        setIsActive(!isActive);
+      }}
+      size={isActive ? BUTTON_SIZES.regular : inactiveSize}
+      color={isActive ? COLORS.primary : COLORS.lightGrey}
+      text={text}
+      textColor={isActive ? COLORS.white : COLORS.darkGrey}
+      disabled={disabled}
+      disablePressStyle
+    />
+  );
+};
+
+Button.Toggle = ToggleButton;
+
 export default Button;
 
 Button.propTypes = {
@@ -84,4 +113,13 @@ Button.propTypes = {
     fontSize: PropTypes.oneOf(Object.values(FONT_SIZES)),
     fontWeight: PropTypes.oneOf(Object.values(FONT_WEIGHTS)),
   }),
+  disabled: PropTypes.bool,
+  disablePressStyle: PropTypes.bool,
+};
+
+ToggleButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  initial: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
