@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components/Word Bubbles',
+  title: 'Molecules/Word Bubbles',
   component: WordBubbles,
 };
 

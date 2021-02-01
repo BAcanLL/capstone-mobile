@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components/Emoticon Board',
+  title: 'Molecules/Emoticon Board',
   component: EmoticonBoard,
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-// Wrapper for displaying components
+// Wrapper for displaying atoms
 export const Component = ({ style = {}, className = '', children }) => (
   <View
     className={className}

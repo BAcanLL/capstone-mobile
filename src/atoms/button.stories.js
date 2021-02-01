@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import { COLORS } from './palette';
 
 export default {
-  title: 'Components/Button',
+  title: 'Atoms/Button',
   component: Button,
 };
 

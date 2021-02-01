@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wrapper } from './emoticon-board.style';
-import Emoticon from './emoticon';
+import Emoticon from '../atoms/emoticon';
 
 export const EMOTICON_TYPES = {
   DISMAL: 'EMOTICON_DISMAL',

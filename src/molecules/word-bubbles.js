@@ -1,6 +1,6 @@
 import React from 'react';
 import { ItemWrapper, Wrapper } from './word-bubbles.style';
-import Button from './button';
+import Button from '../atoms/button';
 import PropTypes from 'prop-types';
 
 const WordBubbles = ({ words, onPress, disabled = false }) => {

@@ -4,7 +4,7 @@ import { Component } from '../utils/storybook';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/Emoticon',
+  title: 'Atoms/Emoticon',
   component: Emoticon,
 };
 

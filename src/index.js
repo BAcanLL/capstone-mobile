@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Icon } from './components/icon';
-import { ICONS } from './components/icons';
-import { COLORS } from './components/palette';
+import { Icon } from './atoms/icon';
+import { ICONS } from './atoms/icons';
+import { COLORS } from './atoms/palette';
 
 const AppContainer = () => {
   return (

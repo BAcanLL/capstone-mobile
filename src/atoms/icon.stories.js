@@ -7,7 +7,7 @@ import { ICON_KEYS, ICONS } from './icons';
 import { View, Text } from 'react-native';
 
 export default {
-  title: 'Components/Icon',
+  title: 'Atoms/Icon',
   component: Icon,
 };
 

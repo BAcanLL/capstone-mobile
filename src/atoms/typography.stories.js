@@ -5,7 +5,7 @@ import { FONT_SIZES, FONT_WEIGHTS, TextView } from './typography';
 import { COLORS } from './palette';
 
 export default {
-  title: 'Components/Typography',
+  title: 'Atoms/Typography',
   component: TextView,
 };
 

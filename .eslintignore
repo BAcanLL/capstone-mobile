@@ -2,4 +2,4 @@ node_modules/**
 .yarn/**
 .eslintrc.js
 .storybook/*
-src/components/icons.js
+src/atoms/icons.js
