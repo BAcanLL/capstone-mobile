@@ -9,7 +9,7 @@ export default {
 };
 
 export const sentimentCollection = () => (
-  <Component style={{ background: COLORS.lightGrey, padding: 25, width: 375 }}>
+  <Component style={{ background: COLORS.lightGrey, padding: 25, width: 400 }}>
     <SentimentCollection />
   </Component>
 );
