@@ -34,6 +34,7 @@ export const ContentWrapper = styled.View`
   justify-content: center;
   align-items: center;
   position: relative;
+  height: auto;
 
   padding: 14px 0 20px 0px;
 `;
@@ -61,7 +62,9 @@ export const TimerWrapper = styled.View`
   align-items: center;
   position: absolute;
 
-  width: 110%;
-  height: 110%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: ${COLORS.white};
 `;
