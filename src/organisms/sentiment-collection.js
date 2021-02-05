@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ContentWrapper,
   ExpandButton,
   TextWrapper,
+  TimerWrapper,
   Wrapper,
 } from './sentiment-collection.style';
 import { FONT_SIZES, FONT_WEIGHTS, TextView } from '../atoms/typography';
@@ -13,6 +14,7 @@ import SentimentStore from './sentiment-collection.store';
 import WordBubbles from '../molecules/word-bubbles';
 import Input from '../atoms/input';
 import { Animated, Easing } from 'react-native';
+import Timer, { TIMER_TYPES } from './sentiment-collection.timer';
 
 const EMOTICON_TITLE = 'How are you feeling?';
 const EMOTICON_INSTRUCTIONS =
@@ -35,80 +37,102 @@ const WORDS = [
   'Lonely',
 ];
 
+export const SentimentStoreContext = React.createContext(null);
+
+const INITIAL_HEIGHT = 156;
+const FINAL_HEIGHT = 502;
+
 const SentimentCollection = observer(() => {
   const [pressed, setPressed] = useState(false);
   const store = useLocalStore(SentimentStore);
-  const heightAnim = useRef(new Animated.Value(156)).current;
+  const anim = useRef(new Animated.Value(INITIAL_HEIGHT)).current;
+
+  useEffect(() => {
+    store.init();
+  }, []);
 
   const onExpandPress = () => {
-    const newHeight = store.expanded ? 156 : 502;
-    Animated.timing(heightAnim, {
-      toValue: newHeight,
+    Animated.timing(anim, {
+      toValue: store.expanded ? INITIAL_HEIGHT : FINAL_HEIGHT,
       duration: 500,
       easing: Easing.inOut(Easing.cubic),
+      useNativeDriver: false,
     }).start();
     store.toggleExpanded();
   };
 
   return (
-    <Animated.View style={{ height: heightAnim }}>
-      <Wrapper>
-        <TextWrapper>
-          <TextView>{EMOTICON_TITLE}</TextView>
-          <TextView
-            size={FONT_SIZES.small}
-            weight={FONT_WEIGHTS.regular}
-            color={COLORS.grey}
+    <SentimentStoreContext.Provider value={store}>
+      <Animated.View style={{ height: anim, width: '100%' }}>
+        <Wrapper>
+          <TextWrapper>
+            <TextView>{EMOTICON_TITLE}</TextView>
+            <TextView
+              size={FONT_SIZES.small}
+              weight={FONT_WEIGHTS.regular}
+              color={COLORS.grey}
+            >
+              {EMOTICON_INSTRUCTIONS}
+            </TextView>
+          </TextWrapper>
+          <ContentWrapper>
+            <EmoticonBoard onPress={store.confirmEmoticon} />
+            {!store.emoticonVisible && (
+              <TimerWrapper>
+                <Timer type={TIMER_TYPES.EMOTICON} />
+              </TimerWrapper>
+            )}
+          </ContentWrapper>
+          <TextWrapper>
+            <TextView>{WORDS_TITLE}</TextView>
+            <TextView
+              size={FONT_SIZES.small}
+              weight={FONT_WEIGHTS.regular}
+              color={COLORS.grey}
+            >
+              {WORDS_INSTRUCTIONS}
+            </TextView>
+          </TextWrapper>
+          <ContentWrapper>
+            <WordBubbles
+              onPress={(i, word, selected) => {
+                store.selectWord(i, word, selected);
+              }}
+              selected={store.selectedWords}
+              words={WORDS}
+            />
+            {!store.wordsVisible && (
+              <TimerWrapper>
+                <Timer type={TIMER_TYPES.WORDS} />
+              </TimerWrapper>
+            )}
+          </ContentWrapper>
+          <TextWrapper>
+            <TextView>{TEXT_TITLE}</TextView>
+          </TextWrapper>
+          <ContentWrapper>
+            <Input
+              onChange={store.setTextInputValue}
+              value={store.textInputValue}
+            />
+          </ContentWrapper>
+          <ExpandButton
+            pressed={pressed}
+            onPress={onExpandPress}
+            onPressIn={() => setPressed(true)}
+            onPressOut={() => setPressed(false)}
           >
-            {EMOTICON_INSTRUCTIONS}
-          </TextView>
-        </TextWrapper>
-        <ContentWrapper>
-          <EmoticonBoard onPress={store.selectEmoticon} />
-        </ContentWrapper>
-        <TextWrapper>
-          <TextView>{WORDS_TITLE}</TextView>
-          <TextView
-            size={FONT_SIZES.small}
-            weight={FONT_WEIGHTS.regular}
-            color={COLORS.grey}
-          >
-            {WORDS_INSTRUCTIONS}
-          </TextView>
-        </TextWrapper>
-        <ContentWrapper>
-          <WordBubbles
-            onPress={(i, word, selected) => {
-              store.selectWord(i, word, selected);
-            }}
-            words={WORDS}
-          />
-        </ContentWrapper>
-        <TextWrapper>
-          <TextView>{TEXT_TITLE}</TextView>
-        </TextWrapper>
-        <ContentWrapper>
-          <Input
-            onChange={store.setTextInputValue}
-            value={store.textInputValue}
-          />
-        </ContentWrapper>
-        <ExpandButton
-          pressed={pressed}
-          onPress={onExpandPress}
-          onPressIn={() => setPressed(true)}
-          onPressOut={() => setPressed(false)}
-        >
-          <TextView
-            size={FONT_SIZES.small}
-            weight={FONT_WEIGHTS.regular}
-            color={COLORS.grey}
-          >
-            {store.expanded ? BUTTON_EXPANDED : BUTTON_COLLAPSED}
-          </TextView>
-        </ExpandButton>
-      </Wrapper>
-    </Animated.View>
+            <TextView
+              size={FONT_SIZES.small}
+              weight={FONT_WEIGHTS.regular}
+              color={COLORS.grey}
+            >
+              {store.expanded ? BUTTON_EXPANDED : BUTTON_COLLAPSED}
+            </TextView>
+          </ExpandButton>
+        </Wrapper>
+      </Animated.View>
+    </SentimentStoreContext.Provider>
   );
 });
 

@@ -7,7 +7,7 @@ export const Wrapper = styled.View`
   flex-wrap: wrap;
 
   width: 311px;
-  height: fit-content;
+  height: auto;
 `;
 
 export const ItemWrapper = styled.View`

@@ -3014,6 +3014,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-async-storage/async-storage@npm:^1.13.4":
+  version: 1.13.4
+  resolution: "@react-native-async-storage/async-storage@npm:1.13.4"
+  dependencies:
+    deep-assign: ^3.0.0
+  peerDependencies:
+    react: ~16.8.6 || ~16.9.0 || ~16.11.0 || ~16.13.1 || ~17.0.1
+    react-native: ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || 1000.0.0
+  checksum: 6838092951ea04051278d7668de61ced335b7a9cd44d6913edc98b46ed9d0e4951dd530b4137989822ffbdac3fb653dee12009d2345b8d46a066ef5c7a52ef47
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-debugger-ui@npm:^4.13.1":
   version: 4.13.1
   resolution: "@react-native-community/cli-debugger-ui@npm:4.13.1"
@@ -15391,6 +15403,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.29.1":
+  version: 2.29.1
+  resolution: "moment@npm:2.29.1"
+  checksum: 86729013febf7160de5b93da69273dd304d674b0224f9544b3abd09a87671ddd2cdd57598261ce57588910d63747ffd5590965e83c790d8bf327083c0e0a06e0
+  languageName: node
+  linkType: hard
+
 "move-concurrently@npm:^1.0.1":
   version: 1.0.1
   resolution: "move-concurrently@npm:1.0.1"
@@ -18713,6 +18732,7 @@ resolve@1.1.7:
     "@expo-google-fonts/asap": ^0.1.0
     "@expo/webpack-config": ^0.12.52
     "@mdx-js/react": ^1.6.22
+    "@react-native-async-storage/async-storage": ^1.13.4
     "@storybook/addon-actions": ^6.1.14
     "@storybook/addon-docs": ^6.1.11
     "@storybook/addon-essentials": ^6.1.11
@@ -18737,6 +18757,7 @@ resolve@1.1.7:
     lint-staged: ^10.5.3
     mobx: ^6.0.4
     mobx-react: ^7.0.5
+    moment: ^2.29.1
     prettier: 2.2.1
     prop-types: ^15.7.2
     react: 16.13.1

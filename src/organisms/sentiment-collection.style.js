@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { COLORS } from '../atoms/palette';
+import { brightness, COLORS } from '../atoms/palette';
 
 export const Wrapper = styled.View`
   display: flex;
@@ -12,6 +12,7 @@ export const Wrapper = styled.View`
   height: 100%;
   background: ${COLORS.white};
   border-radius: 10px;
+  margin: 0px 25px 0 25px;
 
   shadow-color: #000;
   shadow-offset: 0px 0px;
@@ -29,6 +30,11 @@ export const TextWrapper = styled.View`
 `;
 
 export const ContentWrapper = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
   padding: 14px 0 20px 0px;
 `;
 
@@ -45,6 +51,17 @@ export const ExpandButton = styled.Pressable`
 
   border-top-width: 1px;
   border-top-color: ${COLORS.lightGrey};
-  background: white;
-  ${(props) => props.pressed && 'filter: brightness(0.98);'}
+  background: ${(props) =>
+    props.pressed ? brightness(COLORS.white, 0.98) : 'white'};
+`;
+
+export const TimerWrapper = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  width: 110%;
+  height: 110%;
+  background: ${COLORS.white};
 `;
