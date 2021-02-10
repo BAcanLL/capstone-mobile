@@ -1,18 +1,26 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { Icon } from './atoms/icon';
-import { ICONS } from './atoms/icons';
+import { StyleSheet, View } from 'react-native';
+import SentimentCollection from './organisms/sentiment-collection';
+import { useCustomFonts } from './utils/hooks';
 import { COLORS } from './atoms/palette';
-
 const AppContainer = () => {
+  const [fontsLoaded] = useCustomFonts();
   return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <Icon icon={ICONS.get('pill')} color={COLORS.green} />
+    <View style={styles.container}>
+      {fontsLoaded ? <SentimentCollection /> : null}
     </View>
   );
 };
 
 export default AppContainer;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.lightGrey,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+  },
+});

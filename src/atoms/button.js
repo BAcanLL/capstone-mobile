@@ -74,9 +74,7 @@ const Button = ({
   );
 };
 
-const ToggleButton = ({ onPress, text, initial = false, disabled = false }) => {
-  const [isActive, setIsActive] = useState(initial);
-
+const ToggleButton = ({ onPress, text, isActive, disabled = false }) => {
   const inactiveSize = {
     ...BUTTON_SIZES.regular,
     fontSize: FONT_SIZES.regular,
@@ -86,7 +84,6 @@ const ToggleButton = ({ onPress, text, initial = false, disabled = false }) => {
     <Button
       onPress={() => {
         onPress(!isActive);
-        setIsActive(!isActive);
       }}
       size={isActive ? BUTTON_SIZES.regular : inactiveSize}
       color={isActive ? COLORS.primary : COLORS.lightGrey}
@@ -120,6 +117,6 @@ Button.propTypes = {
 ToggleButton.propTypes = {
   onPress: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
-  initial: PropTypes.bool,
+  isActive: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
 };

@@ -21,12 +21,23 @@ const WORDS = [
   'Lonely',
 ];
 
-export const wordBubbles = () => (
-  <Component>
-    <WordBubbles
-      onPress={action('Pressed')}
-      words={WORDS}
-      disabled={boolean('Disabled', false)}
-    />
-  </Component>
-);
+export const wordBubbles = () => {
+  const selected = [];
+
+  WORDS.forEach((word) => {
+    if (boolean(word, false)) {
+      selected.push(word);
+    }
+  });
+
+  return (
+    <Component>
+      <WordBubbles
+        onPress={action('Pressed')}
+        selected={selected}
+        words={WORDS}
+        disabled={boolean('Disabled', false)}
+      />
+    </Component>
+  );
+};

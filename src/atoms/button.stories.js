@@ -1,7 +1,7 @@
 import React from 'react';
 import Button, { BUTTON_SIZES } from './button';
 import { Component } from '../utils/storybook';
-import { select, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { COLORS } from './palette';
 
@@ -48,6 +48,10 @@ export const buttonWithTextAndIcon = () => (
 
 export const toggleButton = () => (
   <Component>
-    <Button.Toggle text={text('Text', 'Happy')} onPress={action('Pressed')} />
+    <Button.Toggle
+      text={text('Text', 'Happy')}
+      onPress={action('Pressed')}
+      isActive={boolean('Active', false)}
+    />
   </Component>
 );

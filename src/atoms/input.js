@@ -10,6 +10,8 @@ import { FONT_SIZES, FONT_WEIGHTS } from './typography';
 import Button from './button';
 import PropTypes from 'prop-types';
 
+// TODO: Fix a bug where you can't close the keyboard...
+
 const Input = ({
   value,
   onChange = () => undefined,
