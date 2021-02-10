@@ -3,9 +3,8 @@ import styled from 'styled-components/native';
 export const Wrapper = styled.View`
   display: flex;
   flex-direction: column;
-  width: 275px;
-`;
-
-export const FieldWrapper = styled.View`
-  margin: 5px 0px 15px 0px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;

@@ -23,7 +23,7 @@ const Field = ({
       color={textColor}
       borderColor={color}
       weight={FONT_WEIGHTS.regular}
-      size={secure ? FONT_SIZES.regular : FONT_SIZES.small}
+      size={FONT_SIZES.small}
     />
   );
 };
