@@ -1,8 +1,9 @@
 import React from 'react';
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
+import PropTypes from 'prop-types';
 
-const LogoWithShadow = () => (
-  <Svg width="300" height="113" viewBox="0 0 75 113">
+const LogoWithShadow = ({ scale = 1 }) => (
+  <Svg width={300 * scale} height={113 * scale} viewBox="0 0 75 113">
     <Path
       d="M3 6.95014V34.1473L7.14513 50.3881L31.2596 68.0583L182.82 113L200 42.193L68.3076 0L59.6471 18.8681L3 0.934509V6.95014Z"
       fill="url(#logoWithShadow_linear)"
@@ -32,3 +33,7 @@ const LogoWithShadow = () => (
 );
 
 export default LogoWithShadow;
+
+LogoWithShadow.propTypes = {
+  scale: PropTypes.number,
+};

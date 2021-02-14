@@ -22,6 +22,14 @@ export const BUTTON_SIZES = {
     iconSize: 18,
     shadow: true,
   },
+  subtle: {
+    height: 22,
+    paddingOverride: 10,
+    fontSize: FONT_SIZES.regular,
+    fontWeight: FONT_WEIGHTS.semiBold,
+    iconSize: 14,
+    shadow: false,
+  },
 };
 
 const Button = ({
@@ -48,7 +56,9 @@ const Button = ({
         color={color}
         height={size.height}
         shadow={size.shadow}
+        width={size.width}
         round={round}
+        paddingOverride={size.paddingOverride}
       >
         {text && (
           <TextView

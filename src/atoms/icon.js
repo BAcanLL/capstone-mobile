@@ -1,7 +1,7 @@
 import React from 'react';
 import { COLORS } from './palette';
 import PropTypes from 'prop-types';
-import { ICON_KEYS } from './icons';
+import { ICON_KEYS, ICONS } from './icons';
 import Svg, { G } from 'react-native-svg';
 
 export const DEFAULT_ICON_SIZE = 18;
@@ -22,7 +22,7 @@ export const Icon = ({
 
 Icon.propTypes = {
   color: PropTypes.oneOf(Object.values(COLORS)),
-  icon: PropTypes.oneOf(ICON_KEYS).isRequired,
+  icon: PropTypes.oneOf([...ICON_KEYS, ...ICONS.values()]).isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
   style: PropTypes.object,

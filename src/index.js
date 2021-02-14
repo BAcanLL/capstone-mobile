@@ -3,14 +3,38 @@ import { StyleSheet, View } from 'react-native';
 import SentimentCollection from './organisms/sentiment-collection';
 import { useCustomFonts } from './utils/hooks';
 import { COLORS } from './atoms/palette';
-const AppContainer = () => {
+import { observer, useLocalStore } from 'mobx-react';
+import RootStore, { APP_STATE } from './index.store';
+import Onboarding from './pages/onboarding';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+);
+
+export const RootStoreContext = React.createContext(null);
+
+const AppContainer = observer(() => {
+  const store = useLocalStore(RootStore);
   const [fontsLoaded] = useCustomFonts();
+
   return (
-    <View style={styles.container}>
-      {fontsLoaded ? <SentimentCollection /> : null}
-    </View>
+    <RootStoreContext.Provider value={store}>
+      <DismissKeyboard>
+        <View style={styles.container}>
+          {fontsLoaded ? (
+            <>
+              {store.state === APP_STATE.ONBOARDING && <Onboarding />}
+              {store.state === APP_STATE.MAIN && <SentimentCollection />}
+            </>
+          ) : null}
+        </View>
+      </DismissKeyboard>
+    </RootStoreContext.Provider>
   );
-};
+});
 
 export default AppContainer;
 
