@@ -12,7 +12,7 @@ import OnboardingStore, { ONBOARDING_STATES } from './onboarding.store';
 import LogoWithShadow from '../atoms/logo';
 import Button, { BUTTON_SIZES } from '../atoms/button';
 import { COLORS } from '../atoms/palette';
-import LegalAgreement from '../atoms/legal-agreement';
+import LegalAgreement, { PPModal, TOSModal } from '../atoms/legal-agreement';
 import { FONT_WEIGHTS, TextView } from '../atoms/typography';
 import { RootStoreContext } from '../index';
 
@@ -72,8 +72,8 @@ const Onboarding = observer(() => {
           <LegalAgreement
             checked={store.TOSAgreement}
             onPress={store.toggleTOSAgreement}
-            onTOSClick={store.onTOSClick}
-            onPPClick={store.onPPClick}
+            onTOSClick={() => store.setTOSVisible(true)}
+            onPPClick={() => store.setPPVisible(true)}
           />
           <ContinueButton>
             <Button
@@ -135,6 +135,14 @@ const Onboarding = observer(() => {
           />
         )}
       </Footer>
+      <TOSModal
+        onExitPress={() => store.setTOSVisible(false)}
+        visible={store.TOSVisible}
+      />
+      <PPModal
+        onExitPress={() => store.setPPVisible(false)}
+        visible={store.PPVisible}
+      />
     </Wrapper>
   );
 });

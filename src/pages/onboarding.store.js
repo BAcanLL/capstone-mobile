@@ -24,6 +24,8 @@ const OnboardingStore = ({ rootStore }) => {
     registrationPassword: '',
     registrationPasswordConfirm: '',
     TOSAgreement: false,
+    TOSVisible: false,
+    PPVisible: false,
 
     firstName: '',
     lastName: '',
@@ -58,6 +60,12 @@ const OnboardingStore = ({ rootStore }) => {
     }),
     toggleTOSAgreement: action(() => {
       store.TOSAgreement = !store.TOSAgreement;
+    }),
+    setTOSVisible: action((visible) => {
+      store.TOSVisible = !!visible;
+    }),
+    setPPVisible: action((visible) => {
+      store.PPVisible = !!visible;
     }),
 
     onFirstNameChange: action((name) => {
@@ -98,7 +106,11 @@ const OnboardingStore = ({ rootStore }) => {
           rootStore.setState(APP_STATE.MAIN);
           break;
         case ONBOARDING_STATES.REGISTRATION:
-          store.setState(ONBOARDING_STATES.PROFILING);
+          if (store.TOSAgreement) {
+            store.setState(ONBOARDING_STATES.PROFILING);
+          } else {
+            // notification
+          }
           break;
         case ONBOARDING_STATES.PROFILING:
           rootStore.setState(APP_STATE.MAIN);
@@ -109,12 +121,6 @@ const OnboardingStore = ({ rootStore }) => {
     },
     onForgotPasswordClick: () => {
       console.log('Feature not yet implemented');
-    },
-    onTOSClick: () => {
-      console.log('TOS');
-    },
-    onPPClick: () => {
-      console.error('PP');
     },
   });
 

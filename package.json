@@ -8,7 +8,7 @@
     "eject": "expo eject",
     "test": "node_modules/.bin/jest",
     "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand",
-    "storybook": "start-storybook -p 6006 NODE_ENV=development",
+    "storybook": "start-storybook -p 6006 NODE_ENV=development STORYBOOK=true",
     "build-storybook": "build-storybook"
   },
   "husky": {
