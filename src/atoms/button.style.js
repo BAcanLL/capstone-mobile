@@ -9,10 +9,21 @@ export const ButtonWrapper = styled.View`
 
   background: ${(props) =>
     props.pressed ? brightness(props.color, 0.85) : props.color};
-  width: ${(props) => (props.round ? props.height : 'auto')};
+  width: ${(props) =>
+    props.round
+      ? props.height
+      : props.width && typeof props.width === 'number'
+      ? props.width + 'px'
+      : 'auto'};
   height: ${(props) => props.height + 'px'};
   border-radius: 19px;
-  padding: 0px ${(props) => (props.round ? '0px' : '16px')};
+  padding: 0px
+    ${(props) =>
+      props.round
+        ? '0px'
+        : props.paddingOverride
+        ? props.paddingOverride + 'px'
+        : '16px'};
   ${(props) => props.shadow && 'box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);'}
 `;
 

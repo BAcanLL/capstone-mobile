@@ -48,18 +48,14 @@ describe('Sentiment Store', () => {
   it('should timeout emoticons after selection', () => {
     expect(store.emoticonAvailable).toBeNull();
     store.confirmEmoticon('HAPPY');
-    const TIME = moment()
-      .add(SENTIMENT_TIMEOUT, 'm')
-      .format('YYYY-MM-DDTHH:mm:ss');
-    expect(store.emoticonAvailable.format('YYYY-MM-DDTHH:mm:ss')).toEqual(TIME);
+    const TIME = moment().add(SENTIMENT_TIMEOUT, 'm').toISOString();
+    expect(store.emoticonAvailable).toEqual(TIME);
   });
 
   it('should timeout word bubbles after selection', () => {
     expect(store.wordsAvailable).toBeNull();
     store.confirmWords();
-    const TIME = moment()
-      .add(SENTIMENT_TIMEOUT, 'm')
-      .format('YYYY-MM-DDTHH:mm:ss');
-    expect(store.wordsAvailable.format('YYYY-MM-DDTHH:mm:ss')).toEqual(TIME);
+    const TIME = moment().add(SENTIMENT_TIMEOUT, 'm').toISOString();
+    expect(store.wordsAvailable).toEqual(TIME);
   });
 });
