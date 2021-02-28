@@ -30,6 +30,13 @@ export const BUTTON_SIZES = {
     iconSize: 14,
     shadow: false,
   },
+  title: {
+    height: 30,
+    fontSize: FONT_SIZES.large,
+    fontWeight: FONT_WEIGHTS.semiBold,
+    iconSize: 30,
+    shadow: false,
+  },
 };
 
 const Button = ({
