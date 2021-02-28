@@ -4,7 +4,6 @@ import {
   ExpandButton,
   TextWrapper,
   TimerWrapper,
-  Wrapper,
 } from './sentiment-collection.style';
 import { FONT_SIZES, FONT_WEIGHTS, TextView } from '../atoms/typography';
 import { COLORS } from '../atoms/palette';
@@ -15,6 +14,7 @@ import WordBubbles from '../molecules/word-bubbles';
 import Input from '../atoms/input';
 import { Animated, Easing } from 'react-native';
 import Timer, { TIMER_TYPES } from './sentiment-collection.timer';
+import { Section } from '../atoms/section.style';
 
 const EMOTICON_TITLE = 'How are you feeling?';
 const EMOTICON_INSTRUCTIONS =
@@ -39,8 +39,8 @@ const WORDS = [
 
 export const SentimentStoreContext = React.createContext(null);
 
-const INITIAL_HEIGHT = 156;
-const FINAL_HEIGHT = 502;
+const INITIAL_HEIGHT = 166;
+const FINAL_HEIGHT = 522;
 
 const SentimentCollection = observer(() => {
   const [pressed, setPressed] = useState(false);
@@ -63,8 +63,10 @@ const SentimentCollection = observer(() => {
 
   return (
     <SentimentStoreContext.Provider value={store}>
-      <Animated.View style={{ height: anim, width: '100%' }}>
-        <Wrapper>
+      <Animated.View
+        style={{ height: anim, width: '100%', padding: 5, marginTop: 10 }}
+      >
+        <Section animate style={{ height: '100%', margin: 0 }}>
           <TextWrapper>
             <TextView>{EMOTICON_TITLE}</TextView>
             <TextView
@@ -130,7 +132,7 @@ const SentimentCollection = observer(() => {
               {store.expanded ? BUTTON_EXPANDED : BUTTON_COLLAPSED}
             </TextView>
           </ExpandButton>
-        </Wrapper>
+        </Section>
       </Animated.View>
     </SentimentStoreContext.Provider>
   );

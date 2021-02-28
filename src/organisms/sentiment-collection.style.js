@@ -1,25 +1,6 @@
 import styled from 'styled-components/native';
 import { brightness, COLORS } from '../atoms/palette';
 
-export const Wrapper = styled.View`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
-
-  position: relative;
-  height: 100%;
-  background: ${COLORS.white};
-  border-radius: 10px;
-  margin: 0px 25px 0 25px;
-
-  shadow-color: #000;
-  shadow-offset: 0px 0px;
-  shadow-opacity: 0.05;
-  shadow-radius: 8px;
-`;
-
 export const TextWrapper = styled.View`
   display: flex;
   flex-direction: column;
@@ -47,7 +28,7 @@ export const ExpandButton = styled.Pressable`
 
   position: absolute;
   bottom: 0;
-  height: 20px;
+  height: 30px;
   width: 100%;
 
   border-top-width: 1px;

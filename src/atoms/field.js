@@ -4,6 +4,23 @@ import { COLORS } from './palette';
 import { FONT_SIZES, FONT_WEIGHTS } from './typography';
 import PropTypes from 'prop-types';
 
+export const FIELD_TYPES = {
+  underline: {
+    borderLeft: 0,
+    borderTop: 0,
+    borderRight: 0,
+    borderBottom: 1,
+    borderRadius: 0,
+  },
+  bordered: {
+    borderLeft: 1,
+    borderTop: 1,
+    borderRight: 1,
+    borderBottom: 1,
+    borderRadius: 5,
+  },
+};
+
 const Field = ({
   value = '',
   onChange,
@@ -12,6 +29,7 @@ const Field = ({
   color = COLORS.lightGrey,
   textColor = COLORS.darkGrey,
   secure = false,
+  type = FIELD_TYPES.underline,
 }) => {
   return (
     <FieldInput
@@ -24,6 +42,7 @@ const Field = ({
       borderColor={color}
       weight={FONT_WEIGHTS.regular}
       size={FONT_SIZES.small}
+      {...type}
     />
   );
 };

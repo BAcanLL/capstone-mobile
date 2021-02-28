@@ -1,22 +1,22 @@
 import React from 'react';
 import { Page } from '../utils/storybook';
 import { COLORS } from '../atoms/palette';
-import Onboarding from './onboarding';
+import Home from './home';
 
 export default {
-  title: 'Pages/Onboarding',
-  component: Onboarding,
+  title: 'Pages/Home',
+  component: Home,
 };
 
-export const onboarding = () => {
+export const home = () => {
   return (
     <Page
       style={{
         display: 'flex',
-        background: COLORS.primary,
+        background: COLORS.lightGrey,
       }}
     >
-      <Onboarding />
+      <Home />
     </Page>
   );
 };
