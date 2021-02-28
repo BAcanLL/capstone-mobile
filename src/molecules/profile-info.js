@@ -4,7 +4,6 @@ import {
   ConfirmButtons,
   DeleteButton,
   EditInfo,
-  EditTherapistList,
   EditTherapistWrapper,
   EditWrapper,
   FieldWrapper,
@@ -49,6 +48,9 @@ const CANCEL = 'Cancel';
 const DELETE_ACCOUNT = 'Delete My Account';
 const DELETE = 'Delete';
 
+const PASSWORD_PLACEHOLDER =
+  'e.g. \u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022';
+
 const KeyValuePair = ({ itemKey, itemValue }) => (
   <InfoItem>
     <Key>
@@ -60,13 +62,23 @@ const KeyValuePair = ({ itemKey, itemValue }) => (
   </InfoItem>
 );
 
-const EditableKeyValuePair = ({ itemKey, itemValue, onChange, secure }) => (
+const EditableKeyValuePair = ({
+  itemKey,
+  itemValue,
+  onChange,
+  secure = false,
+}) => (
   <InfoItem>
     <Key>
       <TextView color={COLORS.primary}>{itemKey}</TextView>
     </Key>
     <Value>
-      <Field onChange={onChange} value={itemValue} secure={secure} />
+      <Field
+        onChange={onChange}
+        value={itemValue}
+        secure={secure}
+        placeholder={secure ? PASSWORD_PLACEHOLDER : ''}
+      />
     </Value>
   </InfoItem>
 );
@@ -80,10 +92,12 @@ const ProfileInfo = ({
   weight,
   therapists,
 }) => {
-  const formattedBirthday = moment(birthday).format('YYYY-MM-DD');
+  const formattedBirthday = birthday
+    ? moment(birthday).format('YYYY-MM-DD')
+    : '';
   const hasTherapists = Array.isArray(therapists) && therapists.length > 0;
   return (
-    <Section>
+    <Section style={{ marginTop: 15 }}>
       <Wrapper>
         <TextView size={FONT_SIZES.large}>{TITLE}</TextView>
         <Info>
@@ -116,6 +130,7 @@ const EditProfileInfo = ({
   therapists,
   newPassword,
   confirmPassword,
+  code,
 
   onFirstNameChange = () => {},
   onLastNameChange = () => {},
@@ -125,6 +140,7 @@ const EditProfileInfo = ({
   onWeightChange = () => {},
   onPasswordChange = () => {},
   onConfirmPasswordChange = () => {},
+  onCodeChange = () => {},
 
   onAddTherapist = () => {},
   onDeleteTherapist = () => {},
@@ -132,10 +148,12 @@ const EditProfileInfo = ({
   onConfirmPress = () => {},
   onDeletePress = () => {},
 }) => {
-  const formattedBirthday = moment(birthday).format('YYYY-MM-DD');
+  const formattedBirthday = birthday
+    ? moment(birthday).format('YYYY-MM-DD')
+    : '';
   const hasTherapists = Array.isArray(therapists) && therapists.length > 0;
   return (
-    <Section>
+    <Section style={{ marginBottom: 30, marginTop: 15 }}>
       <EditWrapper>
         <TextView size={FONT_SIZES.large}>{EDIT_TITLE}</TextView>
         <EditInfo>
@@ -196,7 +214,12 @@ const EditProfileInfo = ({
         </SectionHeader>
         <Request>
           <FieldWrapper>
-            <Field placeholder={THERAPIST_CODE} type={FIELD_TYPES.bordered} />
+            <Field
+              placeholder={THERAPIST_CODE}
+              type={FIELD_TYPES.bordered}
+              value={code}
+              onChange={onCodeChange}
+            />
           </FieldWrapper>
           <Button
             onPress={onAddTherapist}
@@ -206,17 +229,15 @@ const EditProfileInfo = ({
         </Request>
         {hasTherapists && (
           <>
-            <EditTherapistList>
-              {therapists.map((t, i) => (
-                <EditTherapistWrapper key={i}>
-                  <Associate.Edit
-                    {...t}
-                    key={t.id}
-                    onDeletePress={() => onDeleteTherapist(t, i)}
-                  />
-                </EditTherapistWrapper>
-              ))}
-            </EditTherapistList>
+            {therapists.map((t, i) => (
+              <EditTherapistWrapper key={i}>
+                <Associate.Edit
+                  {...t}
+                  key={t.id}
+                  onDeletePress={() => onDeleteTherapist(t, i)}
+                />
+              </EditTherapistWrapper>
+            ))}
           </>
         )}
         <SectionHeader>
@@ -229,7 +250,7 @@ const EditProfileInfo = ({
             />
           </ConfirmButtons>
         </SectionHeader>
-        <View style={{ flex: 1 }} />
+        <View style={{ height: 30 }} />
         <SectionHeader>
           <TextView color={COLORS.grey} weight={FONT_WEIGHTS.regular}>
             {DELETE_ACCOUNT}

@@ -28,7 +28,7 @@ export const ExpandButton = styled.Pressable`
 
   position: absolute;
   bottom: 0;
-  height: 20px;
+  height: 30px;
   width: 100%;
 
   border-top-width: 1px;

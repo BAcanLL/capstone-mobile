@@ -8,7 +8,7 @@ const HomeStore = ({ rootStore }) => {
 
     // actions
     setSettingsVisible: action((visible) => {
-      store.setSettingsVisible = visible;
+      store.settingsVisible = visible;
     }),
 
     // store methods

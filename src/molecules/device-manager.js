@@ -14,7 +14,7 @@ import Button, { BUTTON_SIZES } from '../atoms/button';
 import PropTypes from 'prop-types';
 
 const INITIAL_POSITION = -40;
-const FINAL_POSITION = -10;
+const FINAL_POSITION = 10;
 
 const PAIRED_DEVICE = 'Paired Device';
 const PLACEHOLDER_NAME = "John's Watch";
@@ -31,11 +31,13 @@ const DeviceManager = ({ onProfilePress, onSettingsPress, onEditPress }) => {
       toValue: FINAL_POSITION,
       duration: 700,
       easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
     }).start();
     Animated.timing(alphaAnim, {
       toValue: 1,
       duration: 700,
       easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
     }).start();
   }, []);
 

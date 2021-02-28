@@ -7,9 +7,10 @@ export const Wrapper = styled.View`
 
   overflow: hidden;
   width: 100%;
-  height: 126px;
+  height: 170px;
   background: ${COLORS.primary};
   padding: 10px 20px;
+  padding-top: 50px;
 `;
 
 export const Graphic = styled.View`

@@ -41,7 +41,7 @@ export const TherapistWrapper = styled.View`
 // Editor
 
 export const EditWrapper = styled(Wrapper)`
-  height: 780px;
+  height: auto;
 `;
 
 export const EditInfo = styled.View`
@@ -67,9 +67,10 @@ export const FieldWrapper = styled.View`
   margin-right: 10px;
 `;
 
-export const EditTherapistList = styled.View`
+export const EditTherapistList = styled.ScrollView`
+  display: flex;
   width: 100%;
-  max-height: 95px;
+  height: 75px;
 `;
 
 export const EditTherapistWrapper = styled.View`

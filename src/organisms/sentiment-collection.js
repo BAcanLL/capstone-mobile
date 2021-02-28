@@ -39,8 +39,8 @@ const WORDS = [
 
 export const SentimentStoreContext = React.createContext(null);
 
-const INITIAL_HEIGHT = 156;
-const FINAL_HEIGHT = 502;
+const INITIAL_HEIGHT = 166;
+const FINAL_HEIGHT = 522;
 
 const SentimentCollection = observer(() => {
   const [pressed, setPressed] = useState(false);
@@ -63,7 +63,9 @@ const SentimentCollection = observer(() => {
 
   return (
     <SentimentStoreContext.Provider value={store}>
-      <Animated.View style={{ height: anim, width: '100%', padding: '5px' }}>
+      <Animated.View
+        style={{ height: anim, width: '100%', padding: 5, marginTop: 10 }}
+      >
         <Section animate style={{ height: '100%', margin: 0 }}>
           <TextWrapper>
             <TextView>{EMOTICON_TITLE}</TextView>

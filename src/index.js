@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import SentimentCollection from './organisms/sentiment-collection';
 import { useCustomFonts } from './utils/hooks';
 import { COLORS } from './atoms/palette';
 import { observer, useLocalStore } from 'mobx-react';
 import RootStore, { APP_STATE } from './index.store';
 import Onboarding from './pages/onboarding';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import Home from './pages/home';
+import Profile from './pages/profile';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -27,7 +28,8 @@ const AppContainer = observer(() => {
           {fontsLoaded ? (
             <>
               {store.state === APP_STATE.ONBOARDING && <Onboarding />}
-              {store.state === APP_STATE.MAIN && <SentimentCollection />}
+              {store.state === APP_STATE.MAIN && <Home />}
+              {store.state === APP_STATE.PROFILE && <Profile />}
             </>
           ) : null}
         </View>
