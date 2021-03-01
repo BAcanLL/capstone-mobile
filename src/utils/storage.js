@@ -23,3 +23,15 @@ export const asyncGetValue = async (k) => {
     console.log('Failed to retrieve value! ' + e);
   }
 };
+
+export const asyncRemoveValue = async (k) => {
+  if (typeof k !== 'string') {
+    console.log('Storage key must be a string!');
+    return;
+  }
+  try {
+    return await AsyncStorage.removeItem(k);
+  } catch (e) {
+    console.log('Failed to remove value! ' + e);
+  }
+};

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   ContentWrapper,
   ExpandButton,
@@ -15,6 +15,7 @@ import Input from '../atoms/input';
 import { Animated, Easing } from 'react-native';
 import Timer, { TIMER_TYPES } from './sentiment-collection.timer';
 import { Section } from '../atoms/section.style';
+import { RootStoreContext } from '../index';
 
 const EMOTICON_TITLE = 'How are you feeling?';
 const EMOTICON_INSTRUCTIONS =
@@ -44,7 +45,8 @@ const FINAL_HEIGHT = 522;
 
 const SentimentCollection = observer(() => {
   const [pressed, setPressed] = useState(false);
-  const store = useLocalStore(SentimentStore);
+  const { apiStore } = useContext(RootStoreContext);
+  const store = useLocalStore(SentimentStore, { apiStore });
   const anim = useRef(new Animated.Value(INITIAL_HEIGHT)).current;
 
   useEffect(() => {

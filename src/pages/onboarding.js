@@ -30,8 +30,8 @@ const buttonProps = {
 };
 
 const Onboarding = observer(() => {
-  const rootStore = useContext(RootStoreContext);
-  const store = useLocalStore(OnboardingStore, { rootStore });
+  const { rootStore, apiStore } = useContext(RootStoreContext);
+  const store = useLocalStore(OnboardingStore, { rootStore, apiStore });
 
   return (
     <Wrapper>

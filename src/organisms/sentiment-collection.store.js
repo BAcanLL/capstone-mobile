@@ -22,7 +22,7 @@ const formatTime = (time) => {
   return moment(time).format('m:ss');
 };
 
-const SentimentStore = () => {
+const SentimentStore = ({ apiStore }) => {
   const store = observable({
     // observables
     expanded: false,
@@ -101,24 +101,35 @@ const SentimentStore = () => {
         console.log('Failed to initialize Sentiment Store! ' + e);
       }
     },
-    confirmEmoticon: (emoticon) => {
-      console.log(emoticon);
-      // make API call, then on success
+    confirmEmoticon: async (emoticon) => {
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setEmoticonAvailable(timer);
       asyncStoreValue(TIME_KEYS.EMOTICON_AVAILABLE, timer);
+
+      try {
+        await apiStore.submitEmote(emoticon);
+      } catch {
+        // handle error
+      }
     },
-    confirmWords: () => {
-      console.log(store.selectedWords);
-      // make API call, then on success
+    confirmWords: async () => {
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setWordsAvailable(timer);
       asyncStoreValue(TIME_KEYS.WORDS_AVAILABLE, timer);
       store.selectedWordsMap.clear();
+
+      try {
+        await apiStore.submitWords(store.selectedWords);
+      } catch {
+        // handle error
+      }
     },
-    confirmText: () => {
-      console.log(store.textInputValue);
-      // make API call
+    confirmText: async () => {
+      try {
+        await apiStore.submitNote(store.textInputValue);
+      } catch {
+        // handle error
+      }
     },
   });
 

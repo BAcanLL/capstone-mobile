@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx';
-import { APP_STATE } from '../index.store';
+import { APP_STATE, USER_KEY } from '../index.store';
+import { asyncStoreValue } from '../utils/storage';
 
 export const ONBOARDING_STATES = {
   AUTHENTICATION: 'ONBOARDING.AUTHENTICATION',
@@ -13,7 +14,7 @@ const STATE_ERRORS = {
   UNMAPPED: 'Unmapped state action',
 };
 
-const OnboardingStore = ({ rootStore }) => {
+const OnboardingStore = ({ rootStore, apiStore }) => {
   const store = observable({
     // observables
     state: ONBOARDING_STATES.AUTHENTICATION,
@@ -100,19 +101,87 @@ const OnboardingStore = ({ rootStore }) => {
           console.error(STATE_ERRORS.UNMAPPED);
       }
     },
-    onContinueClick: () => {
+    onContinueClick: async () => {
       switch (store.state) {
         case ONBOARDING_STATES.AUTHENTICATION:
-          rootStore.setState(APP_STATE.MAIN);
-          break;
-        case ONBOARDING_STATES.REGISTRATION:
-          if (store.TOSAgreement) {
-            store.setState(ONBOARDING_STATES.PROFILING);
-          } else {
-            // notification
+          if (store.email === '' || store.password === '') {
+            console.log('Missing fields!');
+            return;
+          }
+          try {
+            const result = await apiStore.login(store.email, store.password);
+            if (result != null) {
+              rootStore.setUser(result);
+              rootStore.setState(APP_STATE.MAIN);
+              await asyncStoreValue(USER_KEY, result);
+            }
+          } catch {
+            // handle error
           }
           break;
+        case ONBOARDING_STATES.REGISTRATION:
+          if (
+            store.registrationEmail === '' ||
+            store.registrationPassword === '' ||
+            store.registrationPasswordConfirm === ''
+          ) {
+            console.log('Missing fields!');
+            return;
+          }
+          if (
+            store.registrationPassword !== store.registrationPasswordConfirm
+          ) {
+            console.log('Passwords do not match!');
+            return;
+          }
+          if (!store.TOSAgreement) {
+            console.log('Missing TOS agreement!');
+            return;
+          }
+          store.setState(ONBOARDING_STATES.PROFILING);
+          break;
         case ONBOARDING_STATES.PROFILING:
+          // Check if fields are valid for a new user
+          if (
+            store.registrationEmail === '' ||
+            store.registrationPassword === '' ||
+            store.registrationPasswordConfirm === '' ||
+            store.firstName === '' ||
+            store.lastName === '' ||
+            store.birthday === '' ||
+            store.height === '' ||
+            store.weight === ''
+          ) {
+            console.log('Missing fields!');
+            return;
+          }
+          if (
+            store.registrationPassword !== store.registrationPasswordConfirm
+          ) {
+            console.log('Passwords do not match!');
+            return;
+          }
+
+          var user = {
+            email: store.registrationEmail,
+            password: store.registrationPassword,
+            firstName: store.firstName,
+            lastName: store.lastName,
+            birthday: store.birthday,
+            height: store.height,
+            weight: store.weight,
+          };
+
+          try {
+            const result = await apiStore.createUser(user);
+            if (result != null) {
+              rootStore.setUser(result);
+              rootStore.setState(APP_STATE.MAIN);
+              await asyncStoreValue(USER_KEY, result);
+            }
+          } catch {
+            // handle error
+          }
           rootStore.setState(APP_STATE.MAIN);
           break;
         default:
