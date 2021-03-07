@@ -9,7 +9,7 @@ const TIME_KEYS = {
   WORDS_AVAILABLE: 'TIME_WORDS_AVAILABLE',
 };
 
-export const SENTIMENT_TIMEOUT = 0.5;
+export const SENTIMENT_TIMEOUT = 0.1;
 
 const getTimer = (duration) => {
   return moment().add(duration, 'm');
@@ -107,7 +107,8 @@ const SentimentStore = ({ apiStore }) => {
       asyncStoreValue(TIME_KEYS.EMOTICON_AVAILABLE, timer);
 
       try {
-        await apiStore.submitEmote(emoticon);
+        const res = await apiStore.submitEmote(emoticon);
+        console.log(res.status);
       } catch {
         // handle error
       }
@@ -116,17 +117,21 @@ const SentimentStore = ({ apiStore }) => {
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setWordsAvailable(timer);
       asyncStoreValue(TIME_KEYS.WORDS_AVAILABLE, timer);
-      store.selectedWordsMap.clear();
 
       try {
-        await apiStore.submitWords(store.selectedWords);
+        console.log(store.selectedWords);
+        const res = await apiStore.submitWords(store.selectedWords);
+        console.log(res.status);
+        store.selectedWordsMap.clear();
       } catch {
         // handle error
+        store.selectedWordsMap.clear();
       }
     },
     confirmText: async () => {
       try {
-        await apiStore.submitNote(store.textInputValue);
+        const res = await apiStore.submitNote(store.textInputValue);
+        console.log(res.status);
       } catch {
         // handle error
       }

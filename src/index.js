@@ -8,7 +8,7 @@ import Onboarding from './pages/onboarding';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 import Home from './pages/home';
 import Profile from './pages/profile';
-import { asyncGetValue } from './utils/storage';
+import { asyncGetObject } from './utils/storage';
 import APIStore from './api.store';
 
 const DismissKeyboard = ({ children }) => (
@@ -31,8 +31,11 @@ const AppContainer = observer(() => {
       if (store.user == null) {
         try {
           setLoading(true);
-          const cachedUser = await asyncGetValue(USER_KEY);
+          console.log('Getting cached user...');
+          const cachedUser = await asyncGetObject(USER_KEY);
+          console.log(cachedUser);
           if (cachedUser != null) {
+            console.log('Cached user found');
             store.setUser(cachedUser);
             store.setState(APP_STATE.MAIN);
           }

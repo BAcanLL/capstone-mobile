@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import { APP_STATE } from '../index.store';
 
-const ProfileStore = ({ rootStore }) => {
+const ProfileStore = ({ rootStore, apiStore }) => {
   const getField = (original, temp) => {
     const data = original || '';
     if (store.editModeEnabled) {
@@ -126,12 +126,24 @@ const ProfileStore = ({ rootStore }) => {
         rootStore.setState(APP_STATE.MAIN);
       }
     },
-    addTherapist: () => {
+    addTherapist: async () => {
       // API call
+      try {
+        const res = await apiStore.addAssociate(store.code);
+        if (res.status === 200) {
+          store.setTherapists([res.data]);
+        }
+      } catch {
+        // handle error
+      }
     },
-    deleteTherapist: (t, i) => {
+    deleteTherapist: async () => {
       // API call
-      console.log(t, i);
+      try {
+        await apiStore.removeAssociate();
+      } catch {
+        // handle error
+      }
     },
     confirm: () => {
       // API call

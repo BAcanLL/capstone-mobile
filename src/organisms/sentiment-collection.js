@@ -118,6 +118,7 @@ const SentimentCollection = observer(() => {
             <Input
               onChange={store.setTextInputValue}
               value={store.textInputValue}
+              onSaveButtonPress={store.confirmText}
             />
           </ContentWrapper>
           <ExpandButton

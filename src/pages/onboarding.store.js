@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 import { APP_STATE, USER_KEY } from '../index.store';
-import { asyncStoreValue } from '../utils/storage';
+import { asyncStoreObject } from '../utils/storage';
 
 export const ONBOARDING_STATES = {
   AUTHENTICATION: 'ONBOARDING.AUTHENTICATION',
@@ -37,6 +37,7 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
     // actions
     setState: action((state) => {
       if (Object.values(ONBOARDING_STATES).includes(state)) {
+        console.log('State transitioning: ', store.state, ' => ', state);
         store.state = state;
       } else {
         console.error(STATE_ERRORS.NONEXISTANT);
@@ -110,10 +111,10 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
           }
           try {
             const result = await apiStore.login(store.email, store.password);
-            if (result != null) {
-              rootStore.setUser(result);
+            if (result.status === 200) {
+              rootStore.setUser(result.data);
               rootStore.setState(APP_STATE.MAIN);
-              await asyncStoreValue(USER_KEY, result);
+              asyncStoreObject(USER_KEY, result.data);
             }
           } catch {
             // handle error
@@ -174,15 +175,16 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
 
           try {
             const result = await apiStore.createUser(user);
-            if (result != null) {
-              rootStore.setUser(result);
+            console.log(result.code, result.data);
+            if (result.status === 200) {
+              rootStore.setUser(result.data);
               rootStore.setState(APP_STATE.MAIN);
-              await asyncStoreValue(USER_KEY, result);
+              asyncStoreObject(USER_KEY, result.data);
             }
-          } catch {
+          } catch (e) {
             // handle error
+            console.log(e);
           }
-          rootStore.setState(APP_STATE.MAIN);
           break;
         default:
           console.error(STATE_ERRORS.UNMAPPED);

@@ -31,6 +31,8 @@ const RootStore = () => {
       }
     }),
     setUser: action((user) => {
+      console.log('Setting user information...');
+      console.log(user);
       store.user = user;
     }),
   });
