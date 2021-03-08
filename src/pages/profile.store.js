@@ -1,46 +1,7 @@
 import { action, observable } from 'mobx';
 import { APP_STATE } from '../index.store';
 
-const EXAMPLE_THERAPISTS = [
-  {
-    id: '1234',
-    firstName: 'Gregory',
-    lastName: 'House',
-    prefix: 'Dr.',
-    image:
-      'https://njmonthly.com/wp-content/uploads/cache/2008/01/16006860405_de11619ec9_b/111247368.jpg',
-    approved: true,
-  },
-  {
-    id: '1235',
-    firstName: 'Steven',
-    lastName: 'Strange',
-    prefix: 'Dr.',
-    image:
-      'https://cdn.vox-cdn.com/thumbor/8w6m6Sdl8fkNt7UWPJr5hhNasqA=/0x0:1500x750/1400x1400/filters:focal(762x94:1002x334):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/51717777/strange.0.jpg',
-    approved: false,
-  },
-  {
-    id: '1235',
-    firstName: 'Steven',
-    lastName: 'Strange',
-    prefix: 'Dr.',
-    image:
-      'https://cdn.vox-cdn.com/thumbor/8w6m6Sdl8fkNt7UWPJr5hhNasqA=/0x0:1500x750/1400x1400/filters:focal(762x94:1002x334):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/51717777/strange.0.jpg',
-    approved: false,
-  },
-  {
-    id: '1235',
-    firstName: 'Steven',
-    lastName: 'Strange',
-    prefix: 'Dr.',
-    image:
-      'https://cdn.vox-cdn.com/thumbor/8w6m6Sdl8fkNt7UWPJr5hhNasqA=/0x0:1500x750/1400x1400/filters:focal(762x94:1002x334):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/51717777/strange.0.jpg',
-    approved: false,
-  },
-];
-
-const ProfileStore = ({ rootStore }) => {
+const ProfileStore = ({ rootStore, apiStore }) => {
   const getField = (original, temp) => {
     const data = original || '';
     if (store.editModeEnabled) {
@@ -67,7 +28,7 @@ const ProfileStore = ({ rootStore }) => {
     confirmPassword: '',
 
     code: '',
-    therapistList: EXAMPLE_THERAPISTS,
+    therapistList: [],
 
     // computed properties
     get firstName() {
@@ -165,12 +126,24 @@ const ProfileStore = ({ rootStore }) => {
         rootStore.setState(APP_STATE.MAIN);
       }
     },
-    addTherapist: () => {
+    addTherapist: async () => {
       // API call
+      try {
+        const res = await apiStore.addAssociate(store.code);
+        if (res.status === 200) {
+          store.setTherapists([res.data]);
+        }
+      } catch {
+        // handle error
+      }
     },
-    deleteTherapist: (t, i) => {
+    deleteTherapist: async () => {
       // API call
-      console.log(t, i);
+      try {
+        await apiStore.removeAssociate();
+      } catch {
+        // handle error
+      }
     },
     confirm: () => {
       // API call

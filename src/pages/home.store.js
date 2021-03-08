@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import { APP_STATE } from '../index.store';
 
-const HomeStore = ({ rootStore }) => {
+const HomeStore = ({ rootStore, apiStore }) => {
   const store = observable({
     // observables
     settingsVisible: false,
@@ -19,13 +19,17 @@ const HomeStore = ({ rootStore }) => {
       store.setSettingsVisible(true);
     },
     onEditPress: () => {
-      console.log('Edit');
+      console.log('Feature not yet available!');
     },
-    onMedicationPress: () => {
-      console.log('Take');
+    onMedicationPress: async () => {
+      try {
+        await apiStore.submitMedication();
+      } catch {
+        // handle error
+      }
     },
     onCollectDataPress: () => {
-      console.log('Collect Data');
+      console.log('Feature not yet available!');
     },
   });
 

@@ -9,7 +9,7 @@ const TIME_KEYS = {
   WORDS_AVAILABLE: 'TIME_WORDS_AVAILABLE',
 };
 
-export const SENTIMENT_TIMEOUT = 0.5;
+export const SENTIMENT_TIMEOUT = 0.1;
 
 const getTimer = (duration) => {
   return moment().add(duration, 'm');
@@ -22,7 +22,7 @@ const formatTime = (time) => {
   return moment(time).format('m:ss');
 };
 
-const SentimentStore = () => {
+const SentimentStore = ({ apiStore }) => {
   const store = observable({
     // observables
     expanded: false,
@@ -101,24 +101,40 @@ const SentimentStore = () => {
         console.log('Failed to initialize Sentiment Store! ' + e);
       }
     },
-    confirmEmoticon: (emoticon) => {
-      console.log(emoticon);
-      // make API call, then on success
+    confirmEmoticon: async (emoticon) => {
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setEmoticonAvailable(timer);
       asyncStoreValue(TIME_KEYS.EMOTICON_AVAILABLE, timer);
+
+      try {
+        const res = await apiStore.submitEmote(emoticon);
+        console.log(res.status);
+      } catch {
+        // handle error
+      }
     },
-    confirmWords: () => {
-      console.log(store.selectedWords);
-      // make API call, then on success
+    confirmWords: async () => {
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setWordsAvailable(timer);
       asyncStoreValue(TIME_KEYS.WORDS_AVAILABLE, timer);
-      store.selectedWordsMap.clear();
+
+      try {
+        console.log(store.selectedWords);
+        const res = await apiStore.submitWords(store.selectedWords);
+        console.log(res.status);
+        store.selectedWordsMap.clear();
+      } catch {
+        // handle error
+        store.selectedWordsMap.clear();
+      }
     },
-    confirmText: () => {
-      console.log(store.textInputValue);
-      // make API call
+    confirmText: async () => {
+      try {
+        const res = await apiStore.submitNote(store.textInputValue);
+        console.log(res.status);
+      } catch {
+        // handle error
+      }
     },
   });
 

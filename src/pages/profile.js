@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Body, SignOut, Wrapper } from './profile.style';
 import { Header } from '../atoms/section.style';
 import Button, { BUTTON_SIZES } from '../atoms/button';
@@ -14,8 +14,25 @@ const buttonSpecs = { ...BUTTON_SIZES.large, shadow: false, iconSize: 25 };
 const SIGN_OUT = 'Sign Out';
 
 const Profile = observer(() => {
-  const rootStore = useContext(RootStoreContext);
-  const store = useLocalStore(ProfileStore, { rootStore });
+  const { rootStore, apiStore } = useContext(RootStoreContext);
+  const store = useLocalStore(ProfileStore, { rootStore, apiStore });
+
+  useEffect(() => {
+    const getTherapists = async () => {
+      // Retrieve therapists
+      try {
+        const res = await apiStore.getAssociates();
+        if (res.status === 200) {
+          const therapist = res.data;
+          store.setTherapists([therapist]);
+          console.log(therapist);
+        }
+      } catch {
+        console.log('Failed to fetch therapists!');
+      }
+    };
+    getTherapists();
+  }, []);
 
   return (
     <Wrapper>
@@ -39,7 +56,7 @@ const Profile = observer(() => {
         style={{ width: '100%', padding: 5 }}
         showsVerticalScrollIndicator={false}
       >
-        <Body>
+        <Body key={store.therapists.length}>
           {!store.editModeEnabled && (
             <ProfileInfo
               firstName={store.firstName}

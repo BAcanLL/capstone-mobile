@@ -13,8 +13,8 @@ const TAKE = 'Take';
 const COLLECT_DATA = 'Collect Data';
 
 const Home = observer(() => {
-  const rootStore = useContext(RootStoreContext);
-  const store = useLocalStore(HomeStore, { rootStore });
+  const { rootStore, apiStore } = useContext(RootStoreContext);
+  const store = useLocalStore(HomeStore, { rootStore, apiStore });
 
   return (
     <Wrapper>

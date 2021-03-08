@@ -26,7 +26,7 @@ export const ContinueButton = styled.View`
 
 export const Footer = styled.View`
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
 `;
 
 export const TextWrapper = styled.View`

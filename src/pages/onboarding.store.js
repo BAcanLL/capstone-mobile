@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx';
-import { APP_STATE } from '../index.store';
+import { APP_STATE, USER_KEY } from '../index.store';
+import { asyncStoreObject } from '../utils/storage';
 
 export const ONBOARDING_STATES = {
   AUTHENTICATION: 'ONBOARDING.AUTHENTICATION',
@@ -13,7 +14,7 @@ const STATE_ERRORS = {
   UNMAPPED: 'Unmapped state action',
 };
 
-const OnboardingStore = ({ rootStore }) => {
+const OnboardingStore = ({ rootStore, apiStore }) => {
   const store = observable({
     // observables
     state: ONBOARDING_STATES.AUTHENTICATION,
@@ -36,6 +37,7 @@ const OnboardingStore = ({ rootStore }) => {
     // actions
     setState: action((state) => {
       if (Object.values(ONBOARDING_STATES).includes(state)) {
+        console.log('State transitioning: ', store.state, ' => ', state);
         store.state = state;
       } else {
         console.error(STATE_ERRORS.NONEXISTANT);
@@ -100,20 +102,89 @@ const OnboardingStore = ({ rootStore }) => {
           console.error(STATE_ERRORS.UNMAPPED);
       }
     },
-    onContinueClick: () => {
+    onContinueClick: async () => {
       switch (store.state) {
         case ONBOARDING_STATES.AUTHENTICATION:
-          rootStore.setState(APP_STATE.MAIN);
-          break;
-        case ONBOARDING_STATES.REGISTRATION:
-          if (store.TOSAgreement) {
-            store.setState(ONBOARDING_STATES.PROFILING);
-          } else {
-            // notification
+          if (store.email === '' || store.password === '') {
+            console.log('Missing fields!');
+            return;
+          }
+          try {
+            const result = await apiStore.login(store.email, store.password);
+            if (result.status === 200) {
+              rootStore.setUser(result.data);
+              rootStore.setState(APP_STATE.MAIN);
+              asyncStoreObject(USER_KEY, result.data);
+            }
+          } catch {
+            // handle error
           }
           break;
+        case ONBOARDING_STATES.REGISTRATION:
+          if (
+            store.registrationEmail === '' ||
+            store.registrationPassword === '' ||
+            store.registrationPasswordConfirm === ''
+          ) {
+            console.log('Missing fields!');
+            return;
+          }
+          if (
+            store.registrationPassword !== store.registrationPasswordConfirm
+          ) {
+            console.log('Passwords do not match!');
+            return;
+          }
+          if (!store.TOSAgreement) {
+            console.log('Missing TOS agreement!');
+            return;
+          }
+          store.setState(ONBOARDING_STATES.PROFILING);
+          break;
         case ONBOARDING_STATES.PROFILING:
-          rootStore.setState(APP_STATE.MAIN);
+          // Check if fields are valid for a new user
+          if (
+            store.registrationEmail === '' ||
+            store.registrationPassword === '' ||
+            store.registrationPasswordConfirm === '' ||
+            store.firstName === '' ||
+            store.lastName === '' ||
+            store.birthday === '' ||
+            store.height === '' ||
+            store.weight === ''
+          ) {
+            console.log('Missing fields!');
+            return;
+          }
+          if (
+            store.registrationPassword !== store.registrationPasswordConfirm
+          ) {
+            console.log('Passwords do not match!');
+            return;
+          }
+
+          var user = {
+            email: store.registrationEmail,
+            password: store.registrationPassword,
+            firstName: store.firstName,
+            lastName: store.lastName,
+            birthday: store.birthday,
+            height: store.height,
+            weight: store.weight,
+          };
+
+          try {
+            const result = await apiStore.createUser(user);
+            console.log(result.code, result.data);
+            if (result.status === 200) {
+              rootStore.setUser(result.data);
+              rootStore.setState(APP_STATE.MAIN);
+              asyncStoreObject(USER_KEY, result.data);
+            }
+          } catch (e) {
+            // handle error
+            console.log(e);
+          }
           break;
         default:
           console.error(STATE_ERRORS.UNMAPPED);
