@@ -12,8 +12,8 @@ export const FONT_WEIGHTS = {
 export const FONT_SIZES = {
   title: '24px',
   large: '18px',
-  regular: '15px',
-  small: '13px',
+  regular: '16px',
+  small: '14px',
   timer: '36px',
 };
 

@@ -26,7 +26,7 @@ export const InfoItem = styled.View`
 export const Key = styled.View`
   flex-direction: row;
   justify-content: flex-end;
-  width: 75px;
+  width: 80px;
   margin-right: 30px;
 `;
 

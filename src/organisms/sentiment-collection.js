@@ -27,10 +27,10 @@ const BUTTON_COLLAPSED = 'Show';
 const BUTTON_EXPANDED = 'Hide';
 
 const WORDS = [
+  'Confident',
   'Bored',
   'Angry',
-  'Confident',
-  'Accomplished',
+  'Sad',
   'Guilty',
   'Relieved',
   'Happy',

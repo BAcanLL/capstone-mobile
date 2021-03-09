@@ -17,12 +17,18 @@ const INITIAL_POSITION = -40;
 const FINAL_POSITION = 10;
 
 const PAIRED_DEVICE = 'Paired Device';
-const PLACEHOLDER_NAME = "John's Watch";
+const PLACEHOLDER_NAME = 'John';
+const S_WATCH = "'s Watch";
 const PLACEHOLDER_MODEL = 'Apple Watch Series 6';
 
 const EDIT_BUTTON_TEXT = 'Edit';
 
-const DeviceManager = ({ onProfilePress, onSettingsPress, onEditPress }) => {
+const DeviceManager = ({
+  name = PLACEHOLDER_NAME,
+  onProfilePress,
+  onSettingsPress,
+  onEditPress,
+}) => {
   const positionAnim = useRef(new Animated.Value(INITIAL_POSITION)).current;
   const alphaAnim = useRef(new Animated.Value(0)).current;
 
@@ -81,7 +87,7 @@ const DeviceManager = ({ onProfilePress, onSettingsPress, onEditPress }) => {
             size={FONT_SIZES.title}
             weight={FONT_WEIGHTS.bold}
           >
-            {PLACEHOLDER_NAME}
+            {name + S_WATCH}
           </TextView>
           <TextView
             color={COLORS.white}

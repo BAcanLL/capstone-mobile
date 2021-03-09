@@ -339,6 +339,7 @@ const EmoticonWrapper = ({ onPress, disabled, children }) => {
               height: 5,
             },
             shadowOpacity: 0.05,
+            shadowRadius: 1.0,
           }
         }
       >

@@ -19,6 +19,7 @@ const Home = observer(() => {
   return (
     <Wrapper>
       <DeviceManager
+        name={rootStore.user.firstName}
         onSettingsPress={() => store.setSettingsVisible(true)}
         onEditPress={store.onEditPress}
         onProfilePress={store.onProfilePress}

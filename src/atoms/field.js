@@ -41,7 +41,7 @@ const Field = ({
       color={textColor}
       borderColor={color}
       weight={FONT_WEIGHTS.regular}
-      size={FONT_SIZES.small}
+      size={FONT_SIZES.regular}
       {...type}
     />
   );

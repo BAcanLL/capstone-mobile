@@ -94,8 +94,8 @@ const APIStore = ({ rootStore }) => {
     },
     login: async (email, password, callback = () => {}) => {
       const body = {
-        email: 'A@a.a',
-        password: 'aaaaaa',
+        email,
+        password,
       };
       try {
         const res = await makeAPICall('patients/login', body);
