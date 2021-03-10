@@ -3,10 +3,10 @@
 A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
 ## Environment Setup
-Make sure you're environment is at least up to that with the following.
+Make sure you're environment is at least up to date with the following.
 
-* **Node** version 10.19.0
-* **yarn** version 2.
+* **Node** version >= 10.19.0
+* **yarn** version >= 2.4.0
 
 Before you start development, run the following commands.
 ```
