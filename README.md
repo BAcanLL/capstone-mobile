@@ -2,6 +2,8 @@
 
 A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
+![Video](assets/screen-cap.mp4)
+
 ## Environment Setup
 Make sure you're environment is at least up to date with the following.
 
