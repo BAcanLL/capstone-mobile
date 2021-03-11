@@ -27,15 +27,15 @@ const BUTTON_COLLAPSED = 'Show';
 const BUTTON_EXPANDED = 'Hide';
 
 const WORDS = [
-  'Confident',
-  'Bored',
-  'Angry',
-  'Sad',
-  'Guilty',
-  'Relieved',
+  'Stressed',
   'Happy',
-  'Exhausted',
-  'Lonely',
+  'Angry',
+  'Tired',
+  'Sad',
+  'Anxious',
+  'Excited',
+  'Grateful',
+  'Relaxed',
 ];
 
 export const SentimentStoreContext = React.createContext(null);

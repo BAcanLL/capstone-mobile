@@ -3,11 +3,11 @@ import { Wrapper } from './emoticon-board.style';
 import Emoticon from '../atoms/emoticon';
 
 export const EMOTICON_TYPES = {
-  DISMAL: 'EMOTICON_DISMAL',
-  SAD: 'EMOTICON_SAD',
-  NEUTRAL: 'EMOTICON_NEUTRAL',
-  HAPPY: 'EMOTICON_HAPPY',
-  ECSTATIC: 'EMOTICON_ECSTATIC',
+  DISMAL: 'Dismal',
+  SAD: 'Sad',
+  NEUTRAL: 'Neutral',
+  HAPPY: 'Happy',
+  ECSTATIC: 'Ecstatic',
 };
 
 const EmoticonBoard = ({ onPress, disabled = false }) => {

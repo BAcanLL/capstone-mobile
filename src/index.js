@@ -28,7 +28,7 @@ const AppContainer = observer(() => {
   useEffect(() => {
     const getUser = async () => {
       // Check if we can load a user from storage
-      if (store.user == null) {
+      if (store.user == null || store.user.firstName == null) {
         try {
           setLoading(true);
           console.log('Getting cached user...');

@@ -17,7 +17,7 @@ const RootStore = () => {
   const store = observable({
     // observables
     state: APP_STATE.ONBOARDING,
-    user: null,
+    user: {},
 
     // actions
     setState: action((state) => {
