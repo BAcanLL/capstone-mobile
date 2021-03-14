@@ -26,6 +26,7 @@ export const textStyle = css`
     (props.italic ? '-Italic' : '')};
   font-size: ${(props) => props.size || FONT_SIZES.regular};
   color: ${(props) => props.color || COLORS.darkGrey};
+  ${(props) => props.center && 'text-align: center;'}
 `;
 
 export const TextView = styled.Text`
@@ -37,4 +38,5 @@ TextView.propTypes = {
   weight: PropTypes.oneOf(Object.values(FONT_WEIGHTS)),
   size: PropTypes.oneOf(Object.values(FONT_SIZES)),
   italic: PropTypes.bool,
+  center: PropTypes.bool,
 };

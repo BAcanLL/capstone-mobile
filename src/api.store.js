@@ -6,6 +6,7 @@ const API_URL = 'http://capstone-server-404.herokuapp.com/';
 
 const makeAPICall = async (endpoint, body, useNativeFetchAPI = false) => {
   console.log('Making API call to ' + API_URL + endpoint);
+  console.log('Request body: ' + JSON.stringify(body));
   if (useNativeFetchAPI) {
     return await fetch(API_URL + endpoint, {
       method: 'POST',
@@ -89,7 +90,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     login: async (email, password, callback = () => {}) => {
@@ -107,7 +108,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     logout: async (callback = () => {}) => {
@@ -121,7 +122,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(err);
         callback(err);
-        return err;
+        throw err;
       }
     },
     updateUser: async (data, callback = () => {}) => {
@@ -153,7 +154,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     submitWords: async (words, callback = () => {}) => {
@@ -174,14 +175,27 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     submitMedication: async (callback = () => {}) => {
       // Send medication timing
-      const result = true;
-      callback(result);
-      return result;
+      const body = {
+        token: rootStore.user.token,
+        time: moment().format('YYYY-MM-DD HH:mm:ss'),
+      };
+      try {
+        const res = await makeAPICall(
+          'patients/' + rootStore.user.id + '/data/medication',
+          body
+        );
+        callback(res);
+        return res;
+      } catch (err) {
+        console.log(JSON.stringify(err));
+        callback(err);
+        throw err;
+      }
     },
     submitNote: async (note, callback = () => {}) => {
       // Send text note
@@ -201,7 +215,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     getAssociates: async (callback = () => {}) => {
@@ -218,7 +232,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     addAssociate: async (code, callback = () => {}) => {
@@ -237,7 +251,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
     removeAssociate: async (callback = () => {}) => {
@@ -256,7 +270,7 @@ const APIStore = ({ rootStore }) => {
       } catch (err) {
         console.log(JSON.stringify(err));
         callback(err);
-        return err;
+        throw err;
       }
     },
   });

@@ -1,4 +1,5 @@
 import { action, observable } from 'mobx';
+import { COLORS } from './atoms/palette';
 
 export const APP_STATE = {
   ONBOARDING: 'ONBOARDING',
@@ -18,6 +19,9 @@ const RootStore = () => {
     // observables
     state: APP_STATE.ONBOARDING,
     user: {},
+    notifications: null,
+    notificationTimer: null,
+    notificationOpacity: 1,
 
     // actions
     setState: action((state) => {
@@ -34,6 +38,23 @@ const RootStore = () => {
       console.log('Setting user information...');
       console.log(user);
       store.user = user;
+    }),
+    clearNotification: action(() => {
+      if (store.notificationTimer != null) {
+        store.notifications = null;
+      }
+    }),
+    pushNotification: action((message, color = COLORS.red) => {
+      if (typeof message === 'string') {
+        store.notifications = { message, color };
+
+        if (store.notificationTimer != null) {
+          clearTimeout(store.notificationTimer);
+        }
+        store.notificationTimer = setTimeout(() => {
+          store.clearNotification();
+        }, 5000);
+      }
     }),
   });
 

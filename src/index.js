@@ -10,6 +10,7 @@ import Home from './pages/home';
 import Profile from './pages/profile';
 import { asyncGetObject } from './utils/storage';
 import APIStore from './api.store';
+import Notification from './atoms/notification';
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -58,6 +59,15 @@ const AppContainer = observer(() => {
               {store.state === APP_STATE.ONBOARDING && <Onboarding />}
               {store.state === APP_STATE.MAIN && <Home />}
               {store.state === APP_STATE.PROFILE && <Profile />}
+              <View style={styles.notifications}>
+                {store.notifications && (
+                  <Notification
+                    text={store.notifications.message}
+                    color={store.notifications.color}
+                    onClosePress={store.clearNotification}
+                  />
+                )}
+              </View>
             </>
           ) : null}
         </View>
@@ -76,5 +86,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '100%',
     width: '100%',
+  },
+  notifications: {
+    flexDirection: 'column',
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 'auto',
+    bottom: 40,
   },
 });

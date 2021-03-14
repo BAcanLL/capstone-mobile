@@ -45,8 +45,8 @@ const FINAL_HEIGHT = 522;
 
 const SentimentCollection = observer(() => {
   const [pressed, setPressed] = useState(false);
-  const { apiStore } = useContext(RootStoreContext);
-  const store = useLocalStore(SentimentStore, { apiStore });
+  const { apiStore, rootStore } = useContext(RootStoreContext);
+  const store = useLocalStore(SentimentStore, { apiStore, rootStore });
   const anim = useRef(new Animated.Value(INITIAL_HEIGHT)).current;
 
   useEffect(() => {

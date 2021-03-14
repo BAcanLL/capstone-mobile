@@ -1,14 +1,19 @@
 import { action, observable } from 'mobx';
 import { APP_STATE } from '../index.store';
+import { COLORS } from '../atoms/palette';
 
 const HomeStore = ({ rootStore, apiStore }) => {
   const store = observable({
     // observables
     settingsVisible: false,
+    dataModalVisible: false,
 
     // actions
     setSettingsVisible: action((visible) => {
       store.settingsVisible = visible;
+    }),
+    setDataModalVisible: action((visible) => {
+      store.dataModalVisible = visible;
     }),
 
     // store methods
@@ -23,13 +28,22 @@ const HomeStore = ({ rootStore, apiStore }) => {
     },
     onMedicationPress: async () => {
       try {
+        rootStore.pushNotification('Sending...', COLORS.lightGreen);
         await apiStore.submitMedication();
+        rootStore.pushNotification(
+          'Success! Medication data sent',
+          COLORS.lightGreen
+        );
       } catch {
         // handle error
+        rootStore.pushNotification(
+          'Error. There was problem sending data.',
+          COLORS.red
+        );
       }
     },
     onCollectDataPress: () => {
-      console.log('Feature not yet available!');
+      store.setDataModalVisible(true);
     },
   });
 

@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx';
 import { asyncGetValue, asyncStoreValue } from '../utils/storage';
 import moment from 'moment';
+import { COLORS } from '../atoms/palette';
 
 export const MAX_WORDS = 4;
 
@@ -22,7 +23,7 @@ const formatTime = (time) => {
   return moment(time).format('m:ss');
 };
 
-const SentimentStore = ({ apiStore }) => {
+const SentimentStore = ({ apiStore, rootStore }) => {
   const store = observable({
     // observables
     expanded: false,
@@ -107,13 +108,23 @@ const SentimentStore = ({ apiStore }) => {
       asyncStoreValue(TIME_KEYS.EMOTICON_AVAILABLE, timer);
 
       try {
+        rootStore.pushNotification('Sending...', COLORS.lightGreen);
         const res = await apiStore.submitEmote(emoticon);
+        rootStore.pushNotification(
+          'Success! Emoticon data sent.',
+          COLORS.lightGreen
+        );
         console.log(res.status);
       } catch {
         // handle error
+        rootStore.pushNotification(
+          'Error. There was problem sending data.',
+          COLORS.red
+        );
       }
     },
     confirmWords: async () => {
+      rootStore.pushNotification('Sending...', COLORS.lightGreen);
       const timer = getTimer(SENTIMENT_TIMEOUT).toISOString();
       store.setWordsAvailable(timer);
       asyncStoreValue(TIME_KEYS.WORDS_AVAILABLE, timer);
@@ -123,17 +134,34 @@ const SentimentStore = ({ apiStore }) => {
         const res = await apiStore.submitWords(store.selectedWords);
         console.log(res.status);
         store.selectedWordsMap.clear();
+        rootStore.pushNotification(
+          'Success! Words data sent.',
+          COLORS.lightGreen
+        );
       } catch {
         // handle error
         store.selectedWordsMap.clear();
+        rootStore.pushNotification(
+          'Error. There was problem sending data.',
+          COLORS.red
+        );
       }
     },
     confirmText: async () => {
       try {
+        rootStore.pushNotification('Sending...', COLORS.lightGreen);
         const res = await apiStore.submitNote(store.textInputValue);
         console.log(res.status);
+        rootStore.pushNotification(
+          'Success! Text entry sent.',
+          COLORS.lightGreen
+        );
       } catch {
         // handle error
+        rootStore.pushNotification(
+          'Error. There was problem sending data.',
+          COLORS.red
+        );
       }
     },
   });

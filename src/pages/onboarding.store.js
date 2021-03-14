@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx';
 import { APP_STATE, USER_KEY } from '../index.store';
 import { asyncStoreObject } from '../utils/storage';
+import { COLORS } from '../atoms/palette';
 
 export const ONBOARDING_STATES = {
   AUTHENTICATION: 'ONBOARDING.AUTHENTICATION',
@@ -107,6 +108,7 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
         case ONBOARDING_STATES.AUTHENTICATION:
           if (store.email === '' || store.password === '') {
             console.log('Missing fields!');
+            rootStore.pushNotification('Fields cannot be empty!', COLORS.red);
             return;
           }
           try {
@@ -118,6 +120,10 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
             }
           } catch {
             // handle error
+            rootStore.pushNotification(
+              'Error connecting to server.',
+              COLORS.red
+            );
           }
           break;
         case ONBOARDING_STATES.REGISTRATION:
@@ -127,16 +133,19 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
             store.registrationPasswordConfirm === ''
           ) {
             console.log('Missing fields!');
+            rootStore.pushNotification('Fields cannot be empty!', COLORS.red);
             return;
           }
           if (
             store.registrationPassword !== store.registrationPasswordConfirm
           ) {
             console.log('Passwords do not match!');
+            rootStore.pushNotification('Passwords do not match!', COLORS.red);
             return;
           }
           if (!store.TOSAgreement) {
             console.log('Missing TOS agreement!');
+            rootStore.pushNotification('Please agree to the TOS!', COLORS.red);
             return;
           }
           store.setState(ONBOARDING_STATES.PROFILING);
@@ -154,12 +163,14 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
             store.weight === ''
           ) {
             console.log('Missing fields!');
+            rootStore.pushNotification('Fields cannot be empty!', COLORS.red);
             return;
           }
           if (
             store.registrationPassword !== store.registrationPasswordConfirm
           ) {
             console.log('Passwords do not match!');
+            rootStore.pushNotification('Passwords do not match!', COLORS.red);
             return;
           }
 
@@ -184,6 +195,10 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
           } catch (e) {
             // handle error
             console.log(e);
+            rootStore.pushNotification(
+              'Error connecting to server!',
+              COLORS.red
+            );
           }
           break;
         default:
@@ -192,6 +207,10 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
     },
     onForgotPasswordClick: () => {
       console.log('Feature not yet implemented');
+      rootStore.pushNotification(
+        'This feature is not yet implemented!',
+        COLORS.red
+      );
     },
   });
 

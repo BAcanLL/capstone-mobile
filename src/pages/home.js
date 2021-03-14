@@ -8,9 +8,13 @@ import SentimentCollection from '../organisms/sentiment-collection';
 import HomeStore from './home.store';
 import Button, { BUTTON_SIZES } from '../atoms/button';
 import { COLORS } from '../atoms/palette';
+import ModalView from '../atoms/modal';
+import { TextView } from '../atoms/typography';
+import { Image } from 'react-native';
 
 const TAKE = 'Take';
 const COLLECT_DATA = 'Collect Data';
+const MODAL_TEXT = 'Follow the directions on your smart device to record data.';
 
 const Home = observer(() => {
   const { rootStore, apiStore } = useContext(RootStoreContext);
@@ -44,6 +48,16 @@ const Home = observer(() => {
           />
         </ButtonWrapper>
       </Buttons>
+      <ModalView
+        visible={store.dataModalVisible}
+        onClosePress={() => store.setDataModalVisible(false)}
+      >
+        <TextView center>{MODAL_TEXT}</TextView>
+        <Image
+          source={require('../../assets/applewatch.png')}
+          style={{ width: 62, height: 77, margin: 10 }}
+        />
+      </ModalView>
     </Wrapper>
   );
 });

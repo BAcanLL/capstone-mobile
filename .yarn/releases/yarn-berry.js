@@ -6207,12 +6207,12 @@ module.exports = (() => {
                 return null === i ? null : n.y1.resolve(i, o);
               }
               async fetch(e, t) {
-                const {
-                    parentLocator: r,
-                    path: s,
-                  } = A.parseFileStyleRange(e.reference, {
-                    protocol: 'portal:',
-                  }),
+                const { parentLocator: r, path: s } = A.parseFileStyleRange(
+                    e.reference,
+                    {
+                      protocol: 'portal:',
+                    }
+                  ),
                   a = n.y1.isAbsolute(s)
                     ? {
                         packageFs: new o.M(n.LZ.root),
@@ -12092,15 +12092,13 @@ module.exports = (() => {
               }
             }
             return (
-              u
-                .getMapWithDefault(this.packageRegistry, r)
-                .set(A, {
-                  packageLocation: E,
-                  packageDependencies: B,
-                  packagePeers: y,
-                  linkType: e.linkType,
-                  discardFromLookup: t.discardFromLookup || !1,
-                }),
+              u.getMapWithDefault(this.packageRegistry, r).set(A, {
+                packageLocation: E,
+                packageDependencies: B,
+                packagePeers: y,
+                linkType: e.linkType,
+                discardFromLookup: t.discardFromLookup || !1,
+              }),
               { packageLocation: I, buildDirective: p.length > 0 ? p : null }
             );
           }
