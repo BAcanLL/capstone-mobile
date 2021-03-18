@@ -2,7 +2,7 @@ import React from 'react';
 import { observer, useLocalStore } from 'mobx-react';
 import { useContext } from 'react';
 import { RootStoreContext } from '../index';
-import { Buttons, ButtonWrapper, Wrapper } from './home.style';
+import { Buttons, ButtonWrapper, ModalButtons, Wrapper } from './home.style';
 import DeviceManager from '../molecules/device-manager';
 import SentimentCollection from '../organisms/sentiment-collection';
 import HomeStore from './home.store';
@@ -48,15 +48,28 @@ const Home = observer(() => {
           />
         </ButtonWrapper>
       </Buttons>
-      <ModalView
-        visible={store.dataModalVisible}
-        onClosePress={() => store.setDataModalVisible(false)}
-      >
+      <ModalView visible={store.dataModalVisible}>
         <TextView center>{MODAL_TEXT}</TextView>
         <Image
           source={require('../../assets/applewatch.png')}
           style={{ width: 62, height: 77, margin: 10 }}
         />
+        <ModalButtons>
+          <Button
+            onPress={store.onSyncPress}
+            text="Sync Data"
+            color={COLORS.blue}
+            textColor={COLORS.white}
+            size={BUTTON_SIZES.large}
+          />
+          <Button
+            onPress={() => store.setDataModalVisible(false)}
+            text="Cancel"
+            color={COLORS.red}
+            textColor={COLORS.white}
+            size={BUTTON_SIZES.large}
+          />
+        </ModalButtons>
       </ModalView>
     </Wrapper>
   );

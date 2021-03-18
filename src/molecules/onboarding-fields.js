@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldWrapper, Wrapper } from './onboarding-fields.style';
+import { FieldWrapper, Name, Names, Wrapper } from './onboarding-fields.style';
 import { FONT_WEIGHTS, TextView } from '../atoms/typography';
 import { COLORS } from '../atoms/palette';
 import Field from '../atoms/field';
@@ -17,6 +17,8 @@ const FIRST_NAME = 'First Name';
 const FIRST_NAME_PLACEHOLDER = 'e.g. Alex';
 const LAST_NAME = 'Last Name';
 const LAST_NAME_PLACEHOLDER = 'e.g. Johnson';
+const SEX = 'Sex';
+const SEX_PLACEHOLDER = 'Male or Female';
 const BIRTHDAY = 'Birthday';
 const BIRTHDAY_PLACEHOLDER = 'Enter your birthday date';
 const HEIGHT = 'Height';
@@ -122,6 +124,8 @@ const Profiling = ({
   onFirstNameChange,
   lastNameValue,
   onLastNameChange,
+  sexValue,
+  onSexChange,
   birthdayValue,
   onBirthdayChange,
   heightValue,
@@ -131,25 +135,42 @@ const Profiling = ({
 }) => {
   return (
     <Wrapper>
+      <Names>
+        <Name style={{ marginRight: 15 }}>
+          <TextView color={textColor} weight={textWeight}>
+            {FIRST_NAME}
+          </TextView>
+          <FieldWrapper>
+            <Field
+              onChange={onFirstNameChange}
+              value={firstNameValue}
+              placeholder={FIRST_NAME_PLACEHOLDER}
+              {...fieldConfig}
+            />
+          </FieldWrapper>
+        </Name>
+        <Name>
+          <TextView color={textColor} weight={textWeight}>
+            {LAST_NAME}
+          </TextView>
+          <FieldWrapper>
+            <Field
+              onChange={onLastNameChange}
+              value={lastNameValue}
+              placeholder={LAST_NAME_PLACEHOLDER}
+              {...fieldConfig}
+            />
+          </FieldWrapper>
+        </Name>
+      </Names>
       <TextView color={textColor} weight={textWeight}>
-        {FIRST_NAME}
+        {SEX}
       </TextView>
       <FieldWrapper>
         <Field
-          onChange={onFirstNameChange}
-          value={firstNameValue}
-          placeholder={FIRST_NAME_PLACEHOLDER}
-          {...fieldConfig}
-        />
-      </FieldWrapper>
-      <TextView color={textColor} weight={textWeight}>
-        {LAST_NAME}
-      </TextView>
-      <FieldWrapper>
-        <Field
-          onChange={onLastNameChange}
-          value={lastNameValue}
-          placeholder={LAST_NAME_PLACEHOLDER}
+          onChange={onSexChange}
+          value={sexValue}
+          placeholder={SEX_PLACEHOLDER}
           {...fieldConfig}
         />
       </FieldWrapper>

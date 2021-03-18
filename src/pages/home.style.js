@@ -23,3 +23,11 @@ export const Buttons = styled.View`
   width: 100%;
   margin: 5px;
 `;
+
+export const ModalButtons = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 80%;
+`;

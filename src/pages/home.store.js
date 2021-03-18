@@ -45,6 +45,22 @@ const HomeStore = ({ rootStore, apiStore }) => {
     onCollectDataPress: () => {
       store.setDataModalVisible(true);
     },
+    onSyncPress: async () => {
+      try {
+        rootStore.pushNotification('Sending...', COLORS.lightGreen);
+        await apiStore.submitBiometrics();
+        rootStore.pushNotification(
+          'Success! Collected data sent',
+          COLORS.lightGreen
+        );
+      } catch {
+        // handle error
+        rootStore.pushNotification(
+          'Error. There was problem sending data.',
+          COLORS.red
+        );
+      }
+    },
   });
 
   return store;

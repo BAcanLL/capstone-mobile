@@ -1,12 +1,13 @@
 import { observable } from 'mobx';
 import axios from 'axios';
 import moment from 'moment';
+import data from './utils/ecg-data.example';
 
 const API_URL = 'http://capstone-server-404.herokuapp.com/';
 
 const makeAPICall = async (endpoint, body, useNativeFetchAPI = false) => {
   console.log('Making API call to ' + API_URL + endpoint);
-  console.log('Request body: ' + JSON.stringify(body));
+  // console.log('Request body: ');
   if (useNativeFetchAPI) {
     return await fetch(API_URL + endpoint, {
       method: 'POST',
@@ -64,6 +65,7 @@ const APIStore = ({ rootStore }) => {
         passwordConfirm,
         firstName,
         lastName,
+        sex,
         birthday,
         weight,
         height,
@@ -75,6 +77,7 @@ const APIStore = ({ rootStore }) => {
         password_confirmation: passwordConfirm,
         first_name: firstName,
         last_name: lastName,
+        sex,
         birthday,
         height,
         weight,
@@ -182,12 +185,33 @@ const APIStore = ({ rootStore }) => {
       // Send medication timing
       const body = {
         token: rootStore.user.token,
+        name: 'unspecified',
         time: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
       try {
         const res = await makeAPICall(
           'patients/' + rootStore.user.id + '/data/medication',
           body
+        );
+        callback(res);
+        return res;
+      } catch (err) {
+        console.log(JSON.stringify(err));
+        callback(err);
+        throw err;
+      }
+    },
+    submitBiometrics: async (callback = () => {}) => {
+      const body = {
+        token: rootStore.user.token,
+        recorded_date: moment().format('YYYY-MM-DD HH:mm:ss'),
+        ...data,
+      };
+      try {
+        const res = await makeAPICall(
+          'patients/' + rootStore.user.id + '/ecg/store-raw',
+          body,
+          true
         );
         callback(res);
         return res;

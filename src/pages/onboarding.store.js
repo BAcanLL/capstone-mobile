@@ -31,6 +31,7 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
 
     firstName: '',
     lastName: '',
+    sex: '',
     birthday: '',
     height: '',
     weight: '',
@@ -76,6 +77,9 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
     }),
     onLastNameChange: action((name) => {
       store.lastName = name;
+    }),
+    onSexChange: action((sex) => {
+      store.sex = sex;
     }),
     onBirthdayChange: action((birthday) => {
       store.birthday = birthday;
@@ -158,6 +162,7 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
             store.registrationPasswordConfirm === '' ||
             store.firstName === '' ||
             store.lastName === '' ||
+            store.sex === '' ||
             store.birthday === '' ||
             store.height === '' ||
             store.weight === ''
@@ -179,6 +184,7 @@ const OnboardingStore = ({ rootStore, apiStore }) => {
             password: store.registrationPassword,
             firstName: store.firstName,
             lastName: store.lastName,
+            sex: store.sex,
             birthday: store.birthday,
             height: store.height,
             weight: store.weight,
