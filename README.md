@@ -1,6 +1,6 @@
-![Logo](assets/brand.png)
+![Home Screen - Emotional](https://user-images.githubusercontent.com/23129036/113631671-c9539d80-9637-11eb-99d0-b16a98b69190.png)  
 
-![Home Screen - Emotional](https://user-images.githubusercontent.com/23129036/113631671-c9539d80-9637-11eb-99d0-b16a98b69190.png)
+![Logo](assets/brand.png)
 
 A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
