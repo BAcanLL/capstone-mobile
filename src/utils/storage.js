@@ -49,3 +49,7 @@ export const asyncGetObject = async (k) => {
   const r = await asyncGetValue(k);
   return JSON.parse(r);
 };
+
+export const asyncRemoveObject = async (k) => {
+  return await asyncRemoveValue(k);
+};

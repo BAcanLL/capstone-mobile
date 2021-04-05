@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx';
-import { APP_STATE } from '../index.store';
+import { APP_STATE, USER_KEY } from '../index.store';
+import { asyncRemoveObject } from '../utils/storage';
 
 const ProfileStore = ({ rootStore, apiStore }) => {
   const getField = (original, temp) => {
@@ -152,6 +153,8 @@ const ProfileStore = ({ rootStore, apiStore }) => {
     signOutUser: () => {
       // Delete user token
       rootStore.setState(APP_STATE.ONBOARDING);
+      rootStore.clearUser();
+      asyncRemoveObject(USER_KEY);
     },
     deleteAccount: () => {
       // API call
