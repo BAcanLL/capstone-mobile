@@ -1,5 +1,7 @@
 ![Logo](assets/brand.png)
 
+![Home Screen - Emotional](https://user-images.githubusercontent.com/23129036/113631671-c9539d80-9637-11eb-99d0-b16a98b69190.png)
+
 A mental health and anxiety monitoring application that takes advantage of vital signals from wearable technologies.
 
 ## Demo
@@ -56,3 +58,12 @@ All commits are run through the following pre-commit commands to lint and format
 eslint --fix
 prettier --write
 ```
+
+## Screenshots
+![Authentication Screen](https://user-images.githubusercontent.com/23129036/113631732-e1c3b800-9637-11eb-9b02-22a4e4a54ff1.png)
+![Home Screen](https://user-images.githubusercontent.com/23129036/113631716-dbcdd700-9637-11eb-99cb-3561d5dd0430.png)
+![Home Screen - Emotional - Submitted](https://user-images.githubusercontent.com/23129036/113631721-dec8c780-9637-11eb-945f-9a8a19cd598f.png)
+![Physical Data Collection](https://user-images.githubusercontent.com/23129036/113631783-f6a04b80-9637-11eb-9372-8f40492bda8d.png)
+![Profile Screen](https://user-images.githubusercontent.com/23129036/113631801-ff911d00-9637-11eb-8e33-7d780e016791.png)
+![Profile Screen - Edit](https://user-images.githubusercontent.com/23129036/113631790-fb64ff80-9637-11eb-84e3-620c8323a24c.png)
+
